@@ -2,9 +2,10 @@ import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import Product from "./Product/Product";
 import styled from "styled-components";
+import { storeProducts } from "../../data";
 
 const ProductList = () => {
-  const products = useSelector(state => state.products);
+  const products = storeProducts;
   let [whichDisplay, setDisplay] = useState("none");
 
   return (
