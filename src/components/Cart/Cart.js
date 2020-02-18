@@ -32,62 +32,58 @@ const Cart = () => {
             </thead>
 
             <tbody>
-              {Object.keys(products)
-                .filter(product => products[product].qty > 0)
-                .map(product => {
-                  return (
-                    <tr key={products[product].title} className="CART_ITEM">
-                      <td className="title">
-                        <img
-                          src={require(`../../assets/images/${products[product].image}.jpg`)}
-                          alt="test"
-                        />
-                        <div className="item_title">
-                          <span>{products[product].title}</span>
-                          <button
-                            className="REMOVE_BTN"
-                            onClick={() =>
-                              dispatch(
-                                removeAllFromCart(products[product].title)
-                              )
-                            }
-                          >
-                            Remove From Cart
-                          </button>
-                        </div>
-                      </td>
+              {Object.keys(products).map(product => {
+                return (
+                  <tr key={products[product].title} className="CART_ITEM">
+                    <td className="title">
+                      <img
+                        src={require(`../../assets/images/${products[product].image}.jpg`)}
+                        alt="test"
+                      />
+                      <div className="item_title">
+                        <span>{products[product].title}</span>
+                        <button
+                          className="REMOVE_BTN"
+                          onClick={() =>
+                            dispatch(removeAllFromCart(products[product].title))
+                          }
+                        >
+                          Remove From Cart
+                        </button>
+                      </div>
+                    </td>
 
-                      <td>
-                        <div className="qty_container">
-                          <button
-                            onClick={() =>
-                              dispatch(removeFromCart(products[product].title))
-                            }
-                            className="rmvBtn"
-                          >
-                            -
-                          </button>
-                          {products[product].qty}
-                          <button
-                            onClick={() =>
-                              dispatch(addToCart(products[product].title))
-                            }
-                            className="addBtn"
-                          >
-                            +
-                          </button>
-                        </div>
-                      </td>
+                    <td>
+                      <div className="qty_container">
+                        <button
+                          onClick={() =>
+                            dispatch(removeFromCart(products[product].title))
+                          }
+                          className="rmvBtn"
+                        >
+                          -
+                        </button>
+                        {products[product].qty}
+                        <button
+                          onClick={() =>
+                            dispatch(addToCart(products[product].title))
+                          }
+                          className="addBtn"
+                        >
+                          +
+                        </button>
+                      </div>
+                    </td>
 
-                      <td className="SUB_TOTAL" data-label="Subtotal">
-                        $
-                        {(
-                          products[product].qty * products[product].price
-                        ).toFixed(2)}
-                      </td>
-                    </tr>
-                  );
-                })}
+                    <td className="SUB_TOTAL" data-label="Subtotal">
+                      $
+                      {(
+                        products[product].qty * products[product].price
+                      ).toFixed(2)}
+                    </td>
+                  </tr>
+                );
+              })}
             </tbody>
           </table>
         </CART_ITEMS>
