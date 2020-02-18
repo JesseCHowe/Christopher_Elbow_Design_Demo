@@ -216,7 +216,9 @@ const CART_ITEMS = styled.div`
     table caption {
       font-size: 1.3em;
     }
-
+    img {
+      height: 20px;
+    }
     table thead {
       border: none;
       clip: rect(0 0 0 0);
