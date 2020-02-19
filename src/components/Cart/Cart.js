@@ -34,9 +34,14 @@ const Cart = () => {
 
             <tbody>
               {products.map(product => {
+                const imageLink = storeProducts[product.name].image;
                 return (
                   <tr key={product.name} className="CART_ITEM">
                     <td className="title">
+                      <img
+                        src={require(`../../assets/images/${imageLink}.jpg`)}
+                        alt="test"
+                      />
                       <div className="item_title">
                         <span>{product.name}</span>
                         <button
