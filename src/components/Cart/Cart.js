@@ -129,8 +129,8 @@ const CART_HEADER = styled.div`
 `;
 
 const CART_BODY = styled.div`
-  display: flex;
-  flex-wrap: wrap-reverse;
+  // display: flex;
+  // flex-wrap: wrap-reverse;
 `;
 
 const CART_ITEMS = styled.div`
@@ -167,7 +167,7 @@ const CART_ITEMS = styled.div`
   }
 
   .title {
-    display: flex;
+    // display: flex;
   }
   .item_title {
     text-align: left;
