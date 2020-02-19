@@ -37,12 +37,12 @@ const Cart = () => {
                 return (
                   <tr key={product.name} className="CART_ITEM">
                     <td className="title">
-                      <img
+                      {/* <img
                         src={require(`../../assets/images/${
                           storeProducts[product.name].image
                         }.jpg`)}
                         alt="test"
-                      />
+                      /> */}
                       <div className="item_title">
                         <span>{product.name}</span>
                         <button
