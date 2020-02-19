@@ -215,7 +215,7 @@ const CART_ITEMS = styled.div`
       font-size: 1.3em;
     }
     img {
-      height: 20px;
+      height: auto;
     }
     table thead {
       border: none;
