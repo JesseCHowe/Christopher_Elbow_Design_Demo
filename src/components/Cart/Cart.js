@@ -7,12 +7,13 @@ import {
   removeAllFromCart
 } from "../../store/actions/productSelection";
 import PayPalButton from "./PayPal/PayPalButton";
+import { storeProducts } from "../../data";
 
 const Cart = () => {
   const dispatch = useDispatch();
   const products = useSelector(state => state.products);
-  const total = Object.keys(products).reduce((previous, current) => {
-    return previous + products[current].qty * products[current].price;
+  const total = products.reduce((previous, current) => {
+    return previous + current.qty * storeProducts[current.name].price;
   }, 0);
 
   return (
@@ -32,20 +33,22 @@ const Cart = () => {
             </thead>
 
             <tbody>
-              {Object.keys(products).map(product => {
+              {products.map(product => {
                 return (
-                  <tr key={products[product].title} className="CART_ITEM">
+                  <tr key={product.name} className="CART_ITEM">
                     <td className="title">
                       <img
-                        src={require(`../../assets/images/${products[product].image}.jpg`)}
+                        src={require(`../../assets/images/${
+                          storeProducts[product.name].image
+                        }.jpg`)}
                         alt="test"
                       />
                       <div className="item_title">
-                        <span>{products[product].title}</span>
+                        <span>{product.name}</span>
                         <button
                           className="REMOVE_BTN"
                           onClick={() =>
-                            dispatch(removeAllFromCart(products[product].title))
+                            dispatch(removeAllFromCart(product.name))
                           }
                         >
                           Remove From Cart
@@ -56,18 +59,14 @@ const Cart = () => {
                     <td>
                       <div className="qty_container">
                         <button
-                          onClick={() =>
-                            dispatch(removeFromCart(products[product].title))
-                          }
+                          onClick={() => dispatch(removeFromCart(product.name))}
                           className="rmvBtn"
                         >
                           -
                         </button>
-                        {products[product].qty}
+                        {product.qty}
                         <button
-                          onClick={() =>
-                            dispatch(addToCart(products[product].title))
-                          }
+                          onClick={() => dispatch(addToCart(product.name))}
                           className="addBtn"
                         >
                           +
@@ -78,7 +77,7 @@ const Cart = () => {
                     <td className="SUB_TOTAL" data-label="Subtotal">
                       $
                       {(
-                        products[product].qty * products[product].price
+                        product.qty * storeProducts[product.name].price
                       ).toFixed(2)}
                     </td>
                   </tr>

@@ -6,21 +6,25 @@ import {
   addToCart,
   removeFromCart
 } from "../../store/actions/productSelection";
+import { storeProducts } from "../../data";
 
 const Details = () => {
   const dispatch = useDispatch();
 
   const ChocolateName = useSelector(
-    state => state.products[state.productSelection].title
+    state => storeProducts[state.productSelection].title
   );
   const ChocolateDesc = useSelector(
-    state => state.products[state.productSelection].desc
+    state => storeProducts[state.productSelection].desc
   );
   const ChocolatePrice = useSelector(
-    state => state.products[state.productSelection].price
+    state => storeProducts[state.productSelection].price
   );
-  const ChocolateQty = useSelector(
-    state => state.products[state.productSelection].qty
+
+  const [ChocolateQty] = useSelector(state =>
+    state.products
+      .filter(o => o.name === state.productSelection)
+      .map(o => o.qty)
   );
 
   function add1ToCart() {
@@ -40,7 +44,7 @@ const Details = () => {
               ${ChocolatePrice} <span>IN STOCK</span>
             </p>
             <p>{ChocolateDesc}</p>
-            <p>QTY: {ChocolateQty}</p>
+            <p>QTY: {ChocolateQty || 0}</p>
           </div>
         </div>
 

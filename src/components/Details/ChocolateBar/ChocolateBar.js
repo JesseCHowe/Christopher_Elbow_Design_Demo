@@ -3,18 +3,19 @@ import logo from "../../../logo.svg";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
 import Chocolate from "./Chocolate/Chocolate";
+import { storeProducts } from "../../../data";
 
 const ChocolateBar = () => {
   const newChocolate = useSelector(
-    state => state.products[state.productSelection].color
+    state => storeProducts[state.productSelection].color
   );
 
   const name = useSelector(
-    state => state.products[state.productSelection].wrapper
+    state => storeProducts[state.productSelection].wrapper
   );
 
   const chocolateType = useSelector(
-    state => state.products[state.productSelection].chocolate
+    state => storeProducts[state.productSelection].chocolate
   );
 
   const prevChocolateRef = useRef();

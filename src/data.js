@@ -11,7 +11,7 @@ export const storeProducts = {
       "INGREDIENTS: White Chocolate (cocoa butter, sugar, whole milk powder, dried skim milk, whey, butter, an emulsifier [soy lecithin], natural vanilla extract), raw dried cherries (Montmorency cherries, sugar, and sunflower oil), cinnamon streusel (brown sugar, enriched bleached flour, graham crumbs [enriched wheat flour, graham flour, sugar, palm oil, brown sugar, honey, salt, baking soda, and artificial vanilla flavor], natural whole grain rolled oats, unsalted butter, canola oil, water, and cinnamon).",
     pct: 32,
     price: 7.95,
-    qty: 1,
+    qty: 0,
     title: "Cherry Streusel Chocolate Bar",
     type: "White",
     wrapper: "CHERRY STREUSEL"
