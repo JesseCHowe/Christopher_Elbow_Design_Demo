@@ -9,6 +9,7 @@ class Nav extends Component {
   state = {
     expand: false
   };
+
   expand = () => {
     const navBar = document.querySelector("#navBar");
     this.setState(prevState => ({
@@ -21,14 +22,6 @@ class Nav extends Component {
     }
   };
   render() {
-    let expandBtn;
-    if (window.innerWidth < 600) {
-      expandBtn = (
-        <button onClick={this.expand}>
-          <div></div>
-        </button>
-      );
-    }
     return (
       <NavWrapper>
         <Products id="navBar">
@@ -61,7 +54,9 @@ class Nav extends Component {
               </NavLink>
             </li>
           </ul>
-          {expandBtn}
+          <button className="expndBtn" onClick={this.expand}>
+            <div></div>
+          </button>{" "}
         </Products>
       </NavWrapper>
     );
@@ -218,12 +213,17 @@ const Products = styled.div`
   flex: 1;
   display: flex;
   align-items: center;
+  .expndBtn {
+    display: none;
+  }
   ul {
     display: flex;
     flex: 1;
     justify-content: space-around;
   }
-
+  button {
+    transform: translateX(0px);
+  }
   @media (max-width: 700px) {
     display: block;
     background: #533118;
@@ -236,6 +236,9 @@ const Products = styled.div`
     width: 250px;
     height: 100%;
     transition: 0.5s;
+    .expndBtn {
+      display: block;
+    }
     button {
       position: absolute;
       top: 1rem;

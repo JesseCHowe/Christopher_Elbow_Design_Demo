@@ -16,7 +16,12 @@ const products = (state = initialState, action) => {
 
   switch (action.type) {
     case actionTypes.ADD_TO_CART:
-      if (state[index].name === action.chocolate) {
+      if (index === -1) {
+        return state.concat({
+          name: action.chocolate,
+          qty: 1
+        });
+      } else {
         return [
           ...state.slice(0, index),
           {
@@ -25,11 +30,6 @@ const products = (state = initialState, action) => {
           },
           ...state.slice(index + 1)
         ];
-      } else {
-        return state.concat({
-          name: action.chocolate,
-          qty: 1
-        });
       }
 
     case actionTypes.REMOVE_FROM_CART:

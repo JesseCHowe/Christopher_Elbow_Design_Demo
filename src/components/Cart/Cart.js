@@ -129,8 +129,8 @@ const CART_HEADER = styled.div`
 `;
 
 const CART_BODY = styled.div`
-  // display: flex;
-  // flex-wrap: wrap-reverse;
+  display: flex;
+  flex-wrap: wrap-reverse;
 `;
 
 const CART_ITEMS = styled.div`
@@ -167,7 +167,8 @@ const CART_ITEMS = styled.div`
   }
 
   .title {
-    // display: flex;
+    display: grid;
+    grid-template-columns: auto 75%;
   }
   .item_title {
     text-align: left;
@@ -206,6 +207,9 @@ const CART_ITEMS = styled.div`
     table {
       border: 0;
     }
+    .title {
+      display: block;
+    }
     .CART_ITEM {
       padding: 1rem;
       font-size: 1rem;
@@ -215,7 +219,7 @@ const CART_ITEMS = styled.div`
       font-size: 1.3em;
     }
     img {
-      height: auto;
+      display: block;
     }
     table thead {
       border: none;
