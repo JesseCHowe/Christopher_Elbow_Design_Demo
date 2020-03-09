@@ -1,10 +1,8 @@
 import React, { Component } from "react";
 import { Link, NavLink } from "react-router-dom";
-import { ButtonContainer } from "../styledComponents/Button";
 import styled from "styled-components";
-import logo from "../../logo.svg";
-import logoMobile from "../../logo-mobile.svg";
-
+import logoMobile from "../../assets/logo/logo-mobile.svg";
+import logo from "../../assets/logo/logo.svg";
 class Nav extends Component {
   state = {
     expand: false
@@ -21,6 +19,7 @@ class Nav extends Component {
       navBar.style.transform = "translateX(-250px)";
     }
   };
+
   render() {
     return (
       <NavWrapper>
@@ -34,17 +33,20 @@ class Nav extends Component {
           </Link>
           <ul>
             <li>
-              <NavLink to="/cart" className="aLink" activeClassName="selected">
-                <span>Chocolate Collections</span>
-              </NavLink>
-            </li>
-            <li>
-              <NavLink to="/" className="aLink" activeClassName="selected">
+              <NavLink
+                to="/chocolate-bars"
+                className="aLink"
+                activeClassName="selected"
+              >
                 <span>Chocolate Bars</span>
               </NavLink>
             </li>
             <li>
-              <NavLink to="/cart" className="aLink" activeClassName="selected">
+              <NavLink
+                to="/artisan-confections"
+                className="aLink"
+                activeClassName="selected"
+              >
                 <span>Confections</span>
               </NavLink>
             </li>
@@ -56,7 +58,7 @@ class Nav extends Component {
           </ul>
           <button className="expndBtn" onClick={this.expand}>
             <div></div>
-          </button>{" "}
+          </button>
         </Products>
       </NavWrapper>
     );
@@ -220,9 +222,6 @@ const Products = styled.div`
     display: flex;
     flex: 1;
     justify-content: space-around;
-  }
-  button {
-    transform: translateX(0px);
   }
   @media (max-width: 700px) {
     display: block;

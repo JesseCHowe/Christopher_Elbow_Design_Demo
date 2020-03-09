@@ -1,24 +1,20 @@
 import * as actionTypes from "../actions/actionTypes";
 
-const initialState = [
-  {
-    name: "Strawberry Crisp Chocolate Bar",
-    qty: 11
-  },
-  {
-    name: "Cherry Streusel Chocolate Bar",
-    qty: 23
-  }
-];
+const initialState = [];
 
 const products = (state = initialState, action) => {
   const index = state.findIndex(o => o.name === action.chocolate);
 
   switch (action.type) {
+    case actionTypes.SET_CART:
+      return action.cart;
     case actionTypes.ADD_TO_CART:
       if (index === -1) {
         return state.concat({
-          name: action.chocolate,
+          name: action.chocolate.name,
+          price: action.chocolate.price,
+          url: action.chocolate.url,
+          image: action.chocolate.image,
           qty: 1
         });
       } else {

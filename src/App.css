@@ -1,7 +1,12 @@
 :root {
+  --elbowBrown: #533118;
+  --elbowWhite: #efefef;
+  --elbowGray: #aaa;
+  --elbowDark: #333;
+
   --mainBlue: #2a2a72;
   --lightBlue: #009ffd;
-  --mainWhite: #ffffff;
+  --mainWhite: #fff;
   --mainDark: #232528;
   --mainYellow: #f0efec;
   --navHeight: 65px;

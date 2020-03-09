@@ -1,4 +1,5 @@
 import * as actionTypes from "./actionTypes";
+import axios from "../../axios";
 
 export const selectChocolate = chocolate => {
   return {
@@ -7,7 +8,15 @@ export const selectChocolate = chocolate => {
   };
 };
 
+export const setCart = cart => {
+  return {
+    type: actionTypes.SET_CART,
+    cart
+  };
+};
+
 export const addToCart = chocolate => {
+  console.log("success");
   return {
     type: actionTypes.ADD_TO_CART,
     chocolate
@@ -25,5 +34,23 @@ export const removeAllFromCart = chocolate => {
   return {
     type: actionTypes.REMOVE_ALL_FROM_CART,
     chocolate
+  };
+};
+
+export const initData = category => {
+  return dispath => {
+    axios
+      .get(
+        "https://christopher-elbow-demo.firebaseio.com/products/E3QU6FcTL0bEiDwaJ2Mz.json"
+      )
+      .then(response => {
+        return response.data;
+      })
+      .then(data => {
+        return data.filter(o => o.category === "ChocolateBars");
+      });
+    // .then(selectedDataset => {
+    //   setChocolateData(selectedDataset[0].name);
+    // });
   };
 };

@@ -1,19 +1,17 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import styled from "styled-components";
-import {
-  addToCart,
-  removeFromCart,
-  removeAllFromCart
-} from "../../store/actions/productSelection";
-import PayPalButton from "./PayPal/PayPalButton";
-import { storeProducts } from "../../data";
+import { removeAllFromCart } from "../store/actions/productSelection";
+import PayPalButton from "../components/PayPal/PayPalButton";
+import { storeProducts } from "../data";
+import Button from "../components/UI/Button/Button";
+import QtyCounter from "../components/UI/QtyCounter/QtyCounter";
 
 const Cart = () => {
   const dispatch = useDispatch();
   const products = useSelector(state => state.products);
   const total = products.reduce((previous, current) => {
-    return previous + current.qty * storeProducts[current.name].price;
+    return previous + current.qty * current.price;
   }, 0);
 
   return (
@@ -34,50 +32,31 @@ const Cart = () => {
 
             <tbody>
               {products.map(product => {
-                const imageLink = storeProducts[product.name].image;
                 return (
                   <tr key={product.name} className="CART_ITEM">
                     <td className="title">
                       <img
-                        src={require(`../../assets/images/${imageLink}.jpg`)}
+                        src={require(`../assets/images/${product.image}.jpg`)}
                         alt="test"
                       />
                       <div className="item_title">
                         <span>{product.name}</span>
-                        <button
-                          className="REMOVE_BTN"
-                          onClick={() =>
+                        <Button
+                          clicked={() =>
                             dispatch(removeAllFromCart(product.name))
                           }
+                          btnType="remove"
                         >
                           Remove From Cart
-                        </button>
+                        </Button>
                       </div>
                     </td>
 
                     <td>
-                      <div className="qty_container">
-                        <button
-                          onClick={() => dispatch(removeFromCart(product.name))}
-                          className="rmvBtn"
-                        >
-                          -
-                        </button>
-                        {product.qty}
-                        <button
-                          onClick={() => dispatch(addToCart(product.name))}
-                          className="addBtn"
-                        >
-                          +
-                        </button>
-                      </div>
+                      <QtyCounter product={product} />
                     </td>
-
                     <td className="SUB_TOTAL" data-label="Subtotal">
-                      $
-                      {(
-                        product.qty * storeProducts[product.name].price
-                      ).toFixed(2)}
+                      ${(product.qty * product.price).toFixed(2)}
                     </td>
                   </tr>
                 );
@@ -103,8 +82,7 @@ const Cart = () => {
                 </tr>
               </tbody>
             </table>
-
-            <PayPalButton total={5.32} />
+            <PayPalButton total={total} />
           </CART_SUMMARY>
         </CART_SUMMARY_CONTAINER>
       </CART_BODY>
@@ -115,6 +93,7 @@ const Cart = () => {
 const CART = styled.div`
   max-width: 1200px;
   margin: 0 auto;
+  padding: 1rem;
 `;
 
 const CART_HEADER = styled.div`
@@ -157,6 +136,7 @@ const CART_ITEMS = styled.div`
 
   td {
     padding: 1rem;
+    background: #fff;
   }
 
   .CART_ITEM {
@@ -173,26 +153,6 @@ const CART_ITEMS = styled.div`
   .item_title {
     text-align: left;
     font-weight: bold;
-  }
-  .REMOVE_BTN {
-    display: block;
-    background: #ba0017;
-    color: #efefef;
-    margin-top: 0.5rem;
-    border: 0;
-    padding: 0.5rem;
-  }
-  .qty_container {
-    min-width: 100px;
-    border: 1px solid #000;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    button {
-      font-size: 1rem;
-      background: none;
-      border: 0;
-    }
   }
 
   .SUB_TOTAL {

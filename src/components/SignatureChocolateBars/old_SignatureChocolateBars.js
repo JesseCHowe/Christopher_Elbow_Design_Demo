@@ -34,7 +34,7 @@ const Details = () => {
   return (
     <MainContain>
       <DetailsContainer>
-        <div className="content-container">
+        <div className="content-container" href="#">
           <div className="chocolate_container">
             <ChocolateBar />
           </div>
@@ -76,8 +76,9 @@ const MainContain = styled.div`
   }
 `;
 const DetailsContainer = styled.div`
-  color: #fff;
+  color: #333;
   position: relative;
+  width: 100%;
   max-width: 700px;
   &::after {
     content: "";
@@ -86,7 +87,7 @@ const DetailsContainer = styled.div`
     top: 8%;
     width: 100%;
     height: 90%;
-    background: #a1673f;
+    background: #dfdcd7;
     z-index: -1;
     border: 1rem solid #fff;
     border-radius: 2rem;
@@ -130,10 +131,12 @@ const DetailsContainer = styled.div`
   .add {
     // transform: translate(0.5em, 0.5em);
     // right: 0;
+    background: #efefef;
   }
   .subtract {
     // transform: translate(-0.5em, 0.5em);
     // left: 0;
+    background: #efefef;
   }
   h1 {
     font-size: 1.5rem;
