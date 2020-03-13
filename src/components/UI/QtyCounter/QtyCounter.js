@@ -5,6 +5,7 @@ import {
   addToCart,
   removeFromCart
 } from "../../../store/actions/productSelection";
+
 const QtyCounter = props => {
   const dispatch = useDispatch();
 

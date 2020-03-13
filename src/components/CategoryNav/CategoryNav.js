@@ -26,6 +26,12 @@ const CategoryNav = styled.div`
   display: block;
   height: calc(100vh - 65px);
   border-right: 2px solid #efefef;
+  @media (max-width: 700px) {
+    position: relative;
+    height: auto;
+    max-width: 100%;
+    border: 0;
+  }
 `;
 
 export default categoryNav;

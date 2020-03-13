@@ -1,5 +1,4 @@
 import React from "react";
-import { storeProducts } from "../../../data";
 import styled from "styled-components";
 
 const categoryInfo = props => {

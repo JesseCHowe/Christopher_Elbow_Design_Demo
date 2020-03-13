@@ -17,12 +17,17 @@ const chocolateBar = props => {
 
 const ChocolateBar = styled.div`
   position: relative;
-  // width: 100%;
   display: flex;
   align-items: center;
   margin: 0 auto;
   height: 450px;
-  width: 335px;
+  width: 100%;
+  display: block;
+  max-width: 335px;
+  @media (max-width: 750px) {
+    min-width: 0px;
+    max-width: 320px;
+  }
 `;
 
 export default chocolateBar;

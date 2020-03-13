@@ -6,7 +6,7 @@ const backdrop = props =>
 
 const Backdrop = styled.div`
   width: 100%;
-  height: 100%;
+  height: 100vh;
   position: fixed;
   z-index: 100;
   left: 0;

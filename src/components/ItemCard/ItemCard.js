@@ -21,17 +21,13 @@ const ItemCard = props => {
   );
   if (inCart) {
     cartBtn = (
-      <Button disabled="true" btnType="cart">
+      <Button disabled={true} btnType="cart">
         In Cart
       </Button>
     );
   }
   return (
     <Item>
-      {/* <img
-        src="https://www.elbowchocolates.com/media/catalog/product/cache/2e7f63e2fd3e5d85ac00ae6c2a0bf3d3/t/o/toffee_almond_7.jpg"
-        alt="test"
-      /> */}
       <img
         src={require(`../../assets/images/${props.product.image}.jpg`)}
         alt=""

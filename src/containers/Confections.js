@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Route, useRouteMatch } from "react-router-dom";
+import axios from "../axios";
 import styled from "styled-components";
 import CategoryNav from "../components/CategoryNav/CategoryNav";
-import Topic from "../components/Topic/Topic";
-import axios from "../axios";
 import Spinner from "../components/UI/Spinner/Spinner";
+import Topic from "../components/Topic/Topic";
 
 const Confections = () => {
   let [confectionData, setConfectionData] = useState(null);
@@ -15,7 +15,6 @@ const Confections = () => {
     if (!confectionData) {
       axios
         .get("https://christopher-elbow-demo.firebaseio.com/data.json")
-
         .then(response => {
           return response.data;
         })
@@ -32,13 +31,9 @@ const Confections = () => {
     }
   });
 
-  let testCategory = (
-    <div>
-      <span>Nothing</span>
-    </div>
-  );
+  let category;
+  let confections = <Spinner />;
 
-  let testConfections = <Spinner />;
   if (confectionData && descriptionData) {
     const unique = [...new Set(confectionData.map(item => item.category2))];
     let confectionCatNav = unique.map(o => {
@@ -47,33 +42,32 @@ const Confections = () => {
         url: o.split(" ").join("_")
       };
     });
-    testCategory = (
+    category = (
       <CategoryNav
+        all="true"
         category={confectionCatNav}
         description={descriptionData}
         url={path}
-        all="true"
       />
     );
-    testConfections = <Topic category={confectionData} />;
-  }
-
-  if (descriptionData) {
+    confections = <Topic category={confectionData} />;
   }
 
   return (
     <ConfectionsContainer>
-      {testCategory}
-      <Route path={`${path}/:topicId?`}>{testConfections}</Route>
+      {category}
+      <Route path={`${path}/:topicId?`}>{confections}</Route>
     </ConfectionsContainer>
   );
 };
 
 const ConfectionsContainer = styled.div`
-  max-width: 1200px;
-  margin: 0 auto;
   display: grid;
-  grid-template-columns: 35% auto;
+  grid-template-columns: auto auto;
+  margin: 0 auto;
+  max-width: 1200px;
+  @media (max-width: 750px) {
+    display: block;
   }
 `;
 

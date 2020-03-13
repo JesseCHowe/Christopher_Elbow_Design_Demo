@@ -33,6 +33,7 @@ const ChocolateStyled = styled.div`
   width: 30%;
   height: 98%;
   margin: 0;
+  top: 1%;
   z-index: 0;
 `;
 

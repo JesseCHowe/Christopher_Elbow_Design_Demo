@@ -8,7 +8,7 @@ const Topic = props => {
   let { topicId } = useParams();
   if (topicId) {
     categories = props.category.filter(
-      o => o.category2 == topicId.split("_").join(" ")
+      o => o.category2 === topicId.split("_").join(" ")
     );
   } else {
     categories = props.category;

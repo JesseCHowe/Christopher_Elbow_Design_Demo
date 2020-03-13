@@ -16,7 +16,6 @@ export const setCart = cart => {
 };
 
 export const addToCart = chocolate => {
-  console.log("success");
   return {
     type: actionTypes.ADD_TO_CART,
     chocolate
@@ -49,8 +48,5 @@ export const initData = category => {
       .then(data => {
         return data.filter(o => o.category === "ChocolateBars");
       });
-    // .then(selectedDataset => {
-    //   setChocolateData(selectedDataset[0].name);
-    // });
   };
 };

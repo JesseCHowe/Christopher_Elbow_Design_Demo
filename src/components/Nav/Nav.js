@@ -1,36 +1,25 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import styled from "styled-components";
 import logoMobile from "../../assets/logo/logo-mobile.svg";
 import logo from "../../assets/logo/logo.svg";
-class Nav extends Component {
-  state = {
-    expand: false
-  };
+import Backdrop from "../UI/Backdrop/Backdrop";
 
-  expand = () => {
-    const navBar = document.querySelector("#navBar");
-    this.setState(prevState => ({
-      expand: !prevState.expand
-    }));
-    if (this.state.expand) {
-      navBar.style.transform = "translateX(0px)";
-    } else {
-      navBar.style.transform = "translateX(-250px)";
-    }
-  };
+const Nav = () => {
+  let [viewMobile, setViewMobile] = useState(false);
 
-  render() {
-    return (
+  return (
+    <React.Fragment>
+      <Backdrop show={viewMobile} clicked={() => setViewMobile(false)} />
       <NavWrapper>
-        <Products id="navBar">
-          <Link className="nav__link" to="/">
-            <Logo />
-            <h1>
-              Christopher Elbow <br />
-              <span>CHOCOLATES</span>
-            </h1>
-          </Link>
+        <Link className="nav__link" to="/">
+          <Logo />
+          <h1>
+            Christopher Elbow <br />
+            <span>CHOCOLATES</span>
+          </h1>
+        </Link>
+        <Products inView={viewMobile}>
           <ul>
             <li>
               <NavLink
@@ -51,19 +40,63 @@ class Nav extends Component {
               </NavLink>
             </li>
             <li>
+              <NavLink
+                to="/bonbons"
+                className="aLink"
+                activeClassName="selected"
+              >
+                <span>Bonbons</span>
+              </NavLink>
+            </li>
+            <li>
               <NavLink to="/cart" className="aLink" activeClassName="selected">
                 <span>Cart</span>
               </NavLink>
             </li>
           </ul>
-          <button className="expndBtn" onClick={this.expand}>
-            <div></div>
-          </button>
         </Products>
+        <ExpandButton className="expndBtn" onClick={() => setViewMobile(true)}>
+          <div></div>
+        </ExpandButton>
       </NavWrapper>
-    );
+    </React.Fragment>
+  );
+};
+
+const ExpandButton = styled.button`
+  display: none;
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  border: 0;
+  box-sizing: border-box;
+  left: 0;
+  padding: 0.6rem;
+  &::before {
+    content: "";
+    display: block;
+    background: #533118;
+    width: 100%;
+    height: 3px;
+    margin-bottom: 0.35rem;
   }
-}
+  div {
+    background: #533118;
+    width: 100%;
+    height: 3px;
+  }
+  &::after {
+    content: "";
+    display: block;
+    background: #533118;
+    width: 80%;
+    height: 3px;
+    margin-top: 0.35rem;
+  }
+  @media (max-width: 700px) {
+    display: block;
+  }
+`;
 
 const Logo = styled.div`
   box-sizing: border-box;
@@ -86,17 +119,18 @@ const Logo = styled.div`
     background-size: 40%;
     background-repeat: no-repeat;
   }
-  @media (max-width: 700px) {
-    border: 2px solid #efefef;
-    &::after {
-      background: #efefef;
-      background-image: url(${logoMobile});
-      background-position: center;
-      background-size: 40%;
-      background-repeat: no-repeat;
-    }
-  }
+  // @media (max-width: 700px) {
+  //   border: 2px solid #efefef;
+  //   &::after {
+  //     background: #efefef;
+  //     background-image: url(${logoMobile});
+  //     background-position: center;
+  //     background-size: 40%;
+  //     background-repeat: no-repeat;
+  //   }
+  // }
 `;
+
 const NavWrapper = styled.nav`
   top: 0;
   height: 65px;
@@ -164,10 +198,10 @@ const NavWrapper = styled.nav`
   }
 
   @media (max-width: 700px) {
-    h1 {
-      color: #efefef;
-      font-size: 1rem;
-    }
+    // h1 {
+    //   color: #efefef;
+    //   font-size: 1rem;
+    // }
     .nav__link {
       text-decoration: none;
       height: auto;
@@ -175,6 +209,7 @@ const NavWrapper = styled.nav`
       display: flex;
       align-items: center;
       justify-content: space-around;
+      margin: 0 auto;
     }
     .aLink {
       box-sizing: border-box;
@@ -225,53 +260,17 @@ const Products = styled.div`
   }
   @media (max-width: 700px) {
     display: block;
-    background: #533118;
+    background: var(--elbowBrown);
     position: fixed;
     z-index: 100;
-    left: 0;
+    left: ${props => (props.inView ? "0" : "-250px")};
     top: 0;
     padding: 1rem;
     box-sizing: border-box;
     width: 250px;
     height: 100%;
+    z-index: 200;
     transition: 0.5s;
-    .expndBtn {
-      display: block;
-    }
-    button {
-      position: absolute;
-      top: 1rem;
-      width: 50px;
-      height: 50px;
-      border: 0;
-      background: #533118;
-      box-sizing: border-box;
-      left: 0;
-      color: #efefef;
-      padding: 0.6rem;
-      transform: translateX(250px);
-      &::before {
-        content: "";
-        display: block;
-        background: #efefef;
-        width: 100%;
-        height: 3px;
-        margin-bottom: 0.35rem;
-      }
-      div {
-        background: #efefef;
-        width: 100%;
-        height: 3px;
-      }
-      &::after {
-        content: "";
-        display: block;
-        background: #efefef;
-        width: 80%;
-        height: 3px;
-        margin-top: 0.35rem;
-      }
-    }
     ul {
       display: block;
       padding: 0;
@@ -281,4 +280,5 @@ const Products = styled.div`
     }
   }
 `;
+
 export default Nav;

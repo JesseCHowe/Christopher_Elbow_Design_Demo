@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import { useSelector, useDispatch } from "react-redux";
-import QtyCounter from "../../UI/QtyCounter/QtyCounter";
 import Button from "../../UI/Button/Button";
 import { addToCart } from "../../../store/actions/productSelection";
 
@@ -21,7 +20,7 @@ const Details = props => {
   );
   if (inCart) {
     cartBtn = (
-      <Button disabled="true" btnType="cart">
+      <Button disabled={true} btnType="cart">
         In Cart
       </Button>
     );

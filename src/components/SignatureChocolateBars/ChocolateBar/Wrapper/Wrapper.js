@@ -4,7 +4,6 @@ import logo from "../../../../logo.svg";
 
 const wrapper = props => {
   const chocolateColor = props.product.chocColor;
-  console.log(chocolateColor);
   return (
     <Wrapper chocolateColor={chocolateColor}>
       <Logo />

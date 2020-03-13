@@ -32,18 +32,14 @@ const ChocolateBars = () => {
     }
   });
 
-  let testCategory = (
-    <div>
-      <span>Nothing</span>
-    </div>
-  );
+  let category;
 
-  let testSigChocolate = <Spinner />;
+  let signatureChocolate = <Spinner />;
   if (chocolateData) {
-    testSigChocolate = <SignatureChocolateBars data={chocolateData} />;
+    signatureChocolate = <SignatureChocolateBars data={chocolateData} />;
   }
   if (descriptionData) {
-    testCategory = (
+    category = (
       <CategoryNav
         category={chocolateData}
         url={path}
@@ -53,21 +49,28 @@ const ChocolateBars = () => {
   }
   return (
     <PageContainer>
-      {testCategory}
+      {category}
       <div className="content">
-        <Route path={`${path}/:topicId?`}>{testSigChocolate}</Route>
+        <Route path={`${path}/:topicId?`}>{signatureChocolate}</Route>
       </div>
     </PageContainer>
   );
 };
 
 const PageContainer = styled.div`
-  max-width: 1200px;
-  margin: 0 auto;
-  display: flex;
   align-items: start;
-  .content {
-    margin-top: 60px;
+  display: flex;
+  margin: 0 auto;
+  max-width: 1200px;
+  // .content {
+  //   margin-top: 60px;
+  // }
+  @media (max-width: 750px) {
+    display: block;
+    // max-width: 100%;
+    // .content {
+    //   margin-top: 0;
+    // }
   }
 `;
 
