@@ -19,10 +19,10 @@ const Box = props => {
   const itemArray = [];
 
   const renderBonBonSelection = idx => {
-    console.log("renderBonBon Working");
     dispatch(setItemIndex(idx));
     dispatch(bonBonSelection(true));
   };
+
   for (let i = 0; i < total; i++) {
     bonBons[i] ? itemArray.push(bonBons[i]) : itemArray.push("");
   }
@@ -34,7 +34,7 @@ const Box = props => {
   }
 
   return (
-    <div>
+    <MainBoxContainer>
       <BoxContainer
         rows={rows}
         columns={columns}
@@ -42,13 +42,18 @@ const Box = props => {
         size={dimensions[1]}
       >
         {itemArray.map((o, idx) => {
-          return <Item key={idx} idx={idx} image={o} />;
+          return (
+            <Item isDisabled={props.isDisabled} key={idx} idx={idx} image={o} />
+          );
         })}
       </BoxContainer>
-      <button onClick={() => dispatch(nextStep())}>Proceed to Purcahse</button>
-    </div>
+    </MainBoxContainer>
   );
 };
+
+const MainBoxContainer = styled.div`
+  max-width: 1200px;
+`;
 
 const BoxContainer = styled.div`
   margin: 0 auto;

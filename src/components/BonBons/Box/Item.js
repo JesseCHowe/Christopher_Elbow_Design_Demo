@@ -12,6 +12,7 @@ const Item = props => {
 
   return (
     <ItemContainer
+      disabled={props.isDisabled}
       onClick={() => renderBonBonSelection(props.idx)}
       image={props.image}
     />

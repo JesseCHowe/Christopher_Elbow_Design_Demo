@@ -5,23 +5,23 @@ import Details from "./Details/Details";
 import ChocolateBar from "./ChocolateBar/ChocolateBar";
 
 const SignatureChocolateBars = props => {
-  let ChocolateSelection = <h1>Please Select a Flavor</h1>;
+  let ChocolateSelection = (
+    <Placeholder>
+      <h1>Please Select a Flavor</h1>
+    </Placeholder>
+  );
   const { topicId } = useParams();
   let [chocolateType] = props.data.filter(o => o.url === topicId);
 
   if (topicId) {
     ChocolateSelection = (
-      <React.Fragment>
+      <SignatureChocolateContainer>
         <ChocolateBar product={chocolateType} />
         <Details product={chocolateType} />
-      </React.Fragment>
+      </SignatureChocolateContainer>
     );
   }
-  return (
-    <SignatureChocolateContainer>
-      {ChocolateSelection}
-    </SignatureChocolateContainer>
-  );
+  return <React.Fragment>{ChocolateSelection}</React.Fragment>;
 };
 
 const SignatureChocolateContainer = styled.div`
@@ -32,6 +32,24 @@ const SignatureChocolateContainer = styled.div`
   align-items: center;
   @media (max-width: 750px) {
     display: block;
+  }
+  .test {
+  }
+`;
+
+const Placeholder = styled.div`
+  height: calc(100vh - var(--navHeight));
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  h1 {
+    padding: 1rem;
+    text-align: center;
+    margin: 0 auto;
+    width: fit-content;
+  }
+  @media (max-width: 700px) {
+    height: auto;
   }
 `;
 

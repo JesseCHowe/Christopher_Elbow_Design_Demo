@@ -63,6 +63,28 @@ const BoxSelection = () => {
   );
 };
 
-const BoxSelectionContainer = styled.div``;
+const BoxSelectionContainer = styled.div`
+  h1 {
+    text-align: center;
+    color: var(--elbowBrown);
+    font-family: "Cabin", sans-serif;
+    font-weight: 200;
+    text-transform: uppercase;
+  }
+  max-width: 1200px;
+  margin: 0 auto;
+  ul {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    list-style-type: none;
+    justify-content: space-around;
+    padding: 0;
+    button {
+      background: none;
+      border: 0;
+    }
+  }
+`;
 
 export default BoxSelection;

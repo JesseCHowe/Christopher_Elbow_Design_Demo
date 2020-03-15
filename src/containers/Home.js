@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { Link, NavLink } from "react-router-dom";
 
 const Home = () => {
   const test = require("../assets/banners/bars1_1.jpg");
@@ -31,15 +32,21 @@ const Home = () => {
       </Test>
 
       <HomeContainer>
-        <article className="signatures">
+        <NavLink to="/chocolate-bars" className="signatures">
           <span>Signature Chocolate Bars</span>
-        </article>
-        <article className="bonbons">
-          <span>BonBons</span>
-        </article>
-        <article className="confections">
+        </NavLink>
+        <NavLink to="/bonbons" className="bonbons">
+          <div>
+            <span>Signature BonBons</span>
+            <span className="subtitle">
+              Available in collections of 9, 21, <br />
+              and even 48 perfect bites.
+            </span>
+          </div>
+        </NavLink>
+        <NavLink to="/artisan-confections" className="confections">
           <span>Confections</span>
-        </article>
+        </NavLink>
       </HomeContainer>
     </Main>
   );
@@ -51,19 +58,28 @@ const Main = styled.div`
   margin: 0 auto;
 `;
 const Test = styled.div`
+  font-family: "Cabin", sans-serif;
+
   h1 {
     font-size: 1.3rem;
+    color: var(--elbowBrown);
+    font-weight: 300;
   }
-  flex-basis: 25%;
+  flex-basis: 400px;
   padding: 0.75rem;
   border-right: 1px solid #efefef;
+  @media (max-width: 700px) {
+    display: none;
+  }
 `;
 const HomeContainer = styled.div`
-  flex-basis: 100%;
   width: 100%;
   display: flex;
   flex-direction: column;
   height: calc(100vh - var(--navHeight));
+  a {
+    text-decoration: none;
+  }
   > * {
     flex: 1;
     display: flex;
@@ -82,25 +98,35 @@ const HomeContainer = styled.div`
     }
   }
   span {
+    display: block;
     transition: all 0.5s ease-in-out;
-
     font-weight: bold;
-    font-size: 1.3rem;
-    padding: 1rem;
-    // box-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
+    font-size: 1.5rem;
+    color: var(--elbowBrown);
+    font-family: "Cabin", sans-serif;
+    font-weight: 300;
+    margin-bottom: 0;
+
+    text-align: center;
+  }
+  .subtitle {
+    display: block;
+    width: 100%;
+    padding: 0;
+    font-size: 0.75rem;
   }
   .bonbons {
     background-image: url("https://www.elbowchocolates.com/media/wysiwyg/banner-bonbons.jpg");
     background-repeat: no-repeat;
     background-size: cover;
-    background-position: center; /* Center the image */
+    background-position: center;
   }
   .confections {
     position: relative;
     background-image: url("https://www.elbowchocolates.com/media/catalog/category/nuts_1.jpg");
     background-size: cover;
     background-repeat: no-repeat;
-    background-position: right center; /* Center the image */
+    background-position: right center;
     span {
       position: absolute;
       left: 3rem;
@@ -111,10 +137,42 @@ const HomeContainer = styled.div`
     background-image: url("https://www.elbowchocolates.com/media/catalog/category/bars1_1.jpg");
     background-repeat: no-repeat;
     background-size: cover;
-    background-position: left center; /* Center the image */
+    background-position: left center;
     span {
       position: absolute;
       right: 3rem;
+    }
+  }
+  @media (max-width: 700px) {
+    .signatures {
+      span {
+        position: relative;
+        text-align: center;
+        background: #efefef;
+        padding: 0.5rem;
+        right: 0;
+      }
+    }
+    .confections {
+      span {
+        position: relative;
+        text-align: center;
+        background: #efefef;
+        padding: 0.5rem;
+        left: 0;
+      }
+    }
+    .bonbons {
+      span {
+        position: relative;
+        text-align: center;
+        background: #efefef;
+        padding: 0.5rem;
+        left: 0;
+      }
+      .subtitle {
+        width: auto;
+      }
     }
   }
 `;
