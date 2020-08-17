@@ -99,7 +99,7 @@ const Bonbons = () => {
   return (
     <BonBonContainer>
       {BonBonOverlay}
-      <Breadcrumbs currentStep={step} stages={["Size", "Flavors", "Message"]} />
+      {/* <Breadcrumbs currentStep={step} stages={["Size", "Flavors", "Message"]} /> */}
       {currentDisplay}
     </BonBonContainer>
   );
