@@ -7,7 +7,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { reset, previousStep, nextStep } from "../store/actions/bonBons";
 import { addToCart } from "../store/actions/productSelection";
 import Button from "../components/UI/Button/Button";
-import Breadcrumbs from "../components/UI/Breadcrumbs/Breadcrumbs";
+// import Breadcrumbs from "../components/UI/Breadcrumbs/Breadcrumbs";
 
 const Bonbons = () => {
   const dispatch = useDispatch();
@@ -122,6 +122,7 @@ const FinalSelectionContainer = styled.div`
 const BonBonContainer = styled.div`
   box-sizing: border-box;
   max-width: 1200px;
+  padding: 1rem;
   margin: 0 auto;
   .proceedBtn {
     width: fit-content;
