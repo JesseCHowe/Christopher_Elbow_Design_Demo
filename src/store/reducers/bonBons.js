@@ -4,6 +4,7 @@ const initalState = {
   bonBonSelection: false,
   currentIndex: null,
   dimensions: null,
+  bonBon: null,
   step: 1,
   items: []
 };
@@ -51,6 +52,11 @@ const bonBons = (state = initalState, action) => {
         ...state,
         dimensions: action.dimensions
       };
+      case actionTypes.SET_BONBON:
+        return {
+          ...state,
+          bonBon: action.bonbon
+        }
     default:
       return state;
   }

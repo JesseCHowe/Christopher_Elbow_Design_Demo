@@ -17,13 +17,17 @@ const Button = styled.button`
   background: none;
   border: 0;
   font-weight: bold;
+  padding: 1rem;
   &.cart {
-    background: #533118;
+    background: #333;
     color: #efefef;
   }
   &.remove {
-    background: #ba0017;
-    color: #efefef;
+    padding: 0;
+    background: none;
+    display: inline-block;
+    color: #ba0017;
+    text-decoration: underline;
   }
   &:disabled {
     background: #efefef;

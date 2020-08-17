@@ -5,6 +5,7 @@ import CategoryNav from "../components/CategoryNav/CategoryNav";
 import SignatureChocolateBars from "../components/SignatureChocolateBars/SignatureChocolateBars";
 import axios from "../axios";
 import Spinner from "../components/UI/Spinner/Spinner";
+import Dropdown from "../components/UI/Dropdown/Dropdown";
 
 const ChocolateBars = () => {
   let [chocolateData, setChocolateData] = useState(null);
@@ -32,11 +33,18 @@ const ChocolateBars = () => {
     }
   });
 
-  let category;
 
+  let category;
+let newDrop;
   let signatureChocolate = <Spinner />;
   if (chocolateData) {
     signatureChocolate = <SignatureChocolateBars data={chocolateData} />;
+    newDrop =  (<Dropdown
+        all='false'
+        category={chocolateData}
+        url={path}
+        description={descriptionData}
+      />)
   }
   if (descriptionData) {
     category = (
@@ -47,30 +55,57 @@ const ChocolateBars = () => {
       />
     );
   }
+
   return (
+    <React.Fragment>
+      <Confections>
+    <h2><span className="signature">Signature</span>Chocolate Bars</h2>
+  <p>From dark chocolate covered nuts to rich buttery toffee, these classic confections have been deliciously re-imagined with the highest quality gourmet chocolate and best ingredients from around the world.</p>
+</Confections>
     <PageContainer>
       {category}
+      {newDrop}
       <div className="content">
         <Route path={`${path}/:topicId?`}>{signatureChocolate}</Route>
       </div>
     </PageContainer>
+    </React.Fragment>
   );
 };
 
-const PageContainer = styled.div`
-  align-items: start;
-  display: flex;
+const Confections = styled.div`
+padding: 1rem;
+h2 {
+  font-family: 'Open Sans', sans-serif;
+      text-align: center;
+      text-transform: uppercase;
+    font-size: 4rem;
+    font-weight: bold;
+    color: #333;
+    margin: 0;
+    padding: 0;
+  }
+  .signature {
+    font-size: 1rem;
+    margin-bottom: 0;
+    color: gray;
+    display: block;
+    text-align: left;
+  }  
+  max-width: 600px;
   margin: 0 auto;
+  padding: 1rem;
+`;
+const PageContainer = styled.div`
+  padding: 0 2rem;
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  column-gap: 1rem;
   max-width: 1200px;
-  // .content {
-  //   margin-top: 60px;
-  // }
+  margin: 1rem auto;
   @media (max-width: 750px) {
     display: block;
-    // max-width: 100%;
-    // .content {
-    //   margin-top: 0;
-    // }
+    margin: 1rem auto;
   }
 `;
 

@@ -1,60 +1,66 @@
 import React from "react";
 import styled from "styled-components";
 import { useDispatch } from "react-redux";
-import { nextStep, setDimensions } from "../../../store/actions/bonBons";
+import { nextStep, setDimensions, setBonBon } from "../../../store/actions/bonBons";
 
 const BoxSelection = () => {
   const dispatch = useDispatch();
 
   const data = [
     {
-      name: "4 Piece Set",
+      name: "4 Piece Gourmet Chocolate Assortment",
       dimensions: [2, 2],
-      img:
-        "https://www.elbowchocolates.com/media/catalog/product/cache/ecf87c27ba4bf8a92b595f15216ef7d6/n/e/new_2017_4pc_final.jpg"
-    },
+      image: 'box_4pc',
+    price: 11.95
+      },
     {
-      name: "9 Piece Set",
+      name: "9 Piece Gourmet Chocolate Assortment",
       dimensions: [3, 3],
-      img:
-        "https://www.elbowchocolates.com/media/catalog/product/cache/ecf87c27ba4bf8a92b595f15216ef7d6/n/e/new_2017_9pc_final_2.jpg"
+      image:'box_9pc',
+        price: 22.95
     },
     {
-      name: "16 Piece Set",
+      name: "16 Piece Gourmet Chocolate Assortment",
       dimensions: [4, 4],
-      img:
-        "https://www.elbowchocolates.com/media/catalog/product/cache/ecf87c27ba4bf8a92b595f15216ef7d6/n/e/new_2017_16pc_final_2.jpg"
+      image: 'box_16pc',
+        price: 38.95
     },
     {
-      name: "21 Piece Set",
+      name: "21 Piece Gourmet Chocolate Assortment",
       dimensions: [3, 7],
-      img:
-        "https://www.elbowchocolates.com/media/catalog/product/cache/ecf87c27ba4bf8a92b595f15216ef7d6/n/e/new_2017_21pc_final_3.jpg"
+      image: 'box_21pc',
+        price: 48.95
     },
     {
-      name: "48 Piece Set",
+      name: "48 Piece Gourmet Chocolate Assortment",
       dimensions: [6, 8],
-      img:
-        "https://www.elbowchocolates.com/media/catalog/product/cache/ecf87c27ba4bf8a92b595f15216ef7d6/n/e/new_2017_48pc_final_11.jpg"
+      image: 'box_48pc',
+      price: 98.95
     }
   ];
 
-  const selectedBox = dimensions => {
+  const selectedBox = o => {
     dispatch(nextStep());
-    dispatch(setDimensions(dimensions));
+    dispatch(setDimensions(o.dimensions));
+    dispatch(setBonBon(o));
   };
 
   return (
     <BoxSelectionContainer>
-      <h1>Select Size</h1>
       <ul>
         {data.map(o => {
           return (
             <li>
-              <button onClick={() => selectedBox(o.dimensions)}>
-                <h3>{o.name}</h3>
-                <img src={o.img} alt={o.name} />
+              <button onClick={() => selectedBox(o)}>
+                <img
+                alt={o.name}
+                src={require(`../../../assets/images/${o.image}.png`)}
+                />
               </button>
+              <div className="desc">
+              <h3>{o.name}</h3>
+                <p className="price">${o.price}</p>
+              </div>
             </li>
           );
         })}
@@ -71,7 +77,18 @@ const BoxSelectionContainer = styled.div`
     font-weight: 200;
     text-transform: uppercase;
   }
-  max-width: 1200px;
+  .desc {
+    text-align: center;
+  }
+  h3 {
+    margin: 0.25rem;
+  }
+  .price {
+    color: gray;
+    font-weight: bold;
+    margin: 0.25rem;
+  }
+  max-width: 1000px;
   margin: 0 auto;
   ul {
     display: flex;
@@ -80,9 +97,16 @@ const BoxSelectionContainer = styled.div`
     list-style-type: none;
     justify-content: space-around;
     padding: 0;
+    li {
+      margin-bottom: 1rem;
+      flex: 1;
+    }
     button {
       background: none;
       border: 0;
+      padding: 1rem;
+      margin: 0 auto;
+      width: 100%;
     }
   }
 `;

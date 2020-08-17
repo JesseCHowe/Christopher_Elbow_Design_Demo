@@ -5,40 +5,58 @@ import PayPalButton from "../../PayPal/PayPalButton";
 const cartSummary = props => {
   return (
     <CART_SUMMARY>
-      <span className="summary">Summary</span>
-      <span className="divider shipping-tax">Shipping and Tax</span>
-
       <table>
+        <thead>
+          <th className="summary"> 
+          Summary
+          </th>
+        </thead>
         <tbody>
+          <tr className="divider">
+            <th>Shipping and Tax</th>
+            <td>$0.00</td>
+          </tr>
           <tr className="divider">
             <th>Subtotal</th>
             <td>${props.total.toFixed(2)}</td>
           </tr>
           <tr className="divider">
             <th>Order Total:</th>
-            <td>${props.total.toFixed(2)}</td>
+            <td className="total">${props.total.toFixed(2)}</td>
+          </tr>
+          <tr>
+            <th>
+            <PayPalButton total={props.total} />
+            </th>
           </tr>
         </tbody>
       </table>
 
-      <PayPalButton total={props.total} />
     </CART_SUMMARY>
   );
 };
 
 const CART_SUMMARY = styled.div`
-  background: #efefef;
+  background: #333;
+  color: #fff;
   position: sticky;
   margin-bottom: 2rem;
-  top: 1rem;
+  margin-right: 1rem;
+  top: 0rem;
   padding: 1rem;
+  border-top: 1rem solid #efefef;
   min-width: 300px;
+  width: 100%;
   box-sizing: border-box;
+  flex:1;
+  .total{
+    color: lightblue;
+    font-weight: bold;
+  }
   .summary {
     display: block;
     font-size: 1.5rem;
-    font-weight: 400;
-    padding-bottom: 1rem;
+    font-weight: bold;
   }
   .shipping-tax {
     display: block;
@@ -56,14 +74,14 @@ const CART_SUMMARY = styled.div`
     text-align: left;
   }
   tr {
-    padding-top: 1rem;
+    // padding-top: 1rem;
   }
   td {
     text-align: right;
   }
   th,
   td {
-    padding-top: 1rem;
+    padding-top: 0.6rem;
     padding-bottom: 0.6rem;
   }
   @media (max-width: 750px) {

@@ -6,6 +6,7 @@ export const REMOVE_ALL_FROM_CART = "REMOVE_ALL_FROM_CART";
 
 export const NEXT_STEP = "NEXT_STEP";
 export const PREVIOUS_STEP = "PREVIOUS_STEP";
+export const SET_BONBON = "SET_BONBON";
 export const ADD_BONBON = "ADD_BONBON";
 export const RESET_BONBON = "RESET_BONBON";
 export const SET_INDEX = "SET_INDEX";

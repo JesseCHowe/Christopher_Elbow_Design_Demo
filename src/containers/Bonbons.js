@@ -1,108 +1,123 @@
-import React, { useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
 import Box from "../components/BonBons/Box/Box";
 import BoxSelection from "../components/BonBons/Box/BoxSelection";
 import BonBonSelection from "../components/BonBons/Box/BonBonSelection";
 import { useSelector, useDispatch } from "react-redux";
 import { reset, previousStep, nextStep } from "../store/actions/bonBons";
+import { addToCart } from "../store/actions/productSelection";
+import Button from "../components/UI/Button/Button";
+import Breadcrumbs from "../components/UI/Breadcrumbs/Breadcrumbs";
 
 const Bonbons = () => {
   const dispatch = useDispatch();
-  const step = useSelector(state => state.bonBons.step);
+  const step = useSelector((state) => state.bonBons.step);
+  const bonbonPurchase = useSelector((state) => state.bonBons.bonBon);
+  const numItems = useSelector((state) => state.bonBons.items);
+
   const displayBonBonSelection = useSelector(
-    state => state.bonBons.bonBonSelection
+    (state) => state.bonBons.bonBonSelection
   );
 
-  let BoxSelectionTest;
-  let BoxTest;
-  let BonBonSelectionTest;
-  let FinalSelection;
+  function handleStepOne() {
+    dispatch(previousStep());
+    dispatch(reset());
+  }
+
+  let size;
+  let filled;
+  if (bonbonPurchase) {
+    size = bonbonPurchase.dimensions[0] * bonbonPurchase.dimensions[1];
+    filled = numItems.reduce((total, o) => {
+      return total + 1;
+    }, 0);
+  }
+
+  let BonBonOverlay;
+  let currentDisplay;
+
   switch (true) {
     case step === 1:
-      BoxSelectionTest = <BoxSelection />;
+      currentDisplay = <BoxSelection />;
       break;
     case step === 2:
-      BoxTest = (
-        <div>
+      currentDisplay = (
+        <React.Fragment>
           <Box />
-          <button className="proceedBtn" onClick={() => dispatch(nextStep())}>
-            Proceed to Purcahse
-          </button>
-        </div>
+          <div className="button-container">
+            <button className="proceedBtn" onClick={() => handleStepOne()}>
+              Prev Step
+            </button>
+            <button
+              disabled={filled < size}
+              className="proceedBtn"
+              onClick={() => dispatch(nextStep())}
+            >
+              Next Step
+            </button>
+          </div>
+        </React.Fragment>
       );
       break;
     case step === 3:
-      FinalSelection = (
-        <div>
-          <h1>Add a message?</h1>
-          <label for="w3mission">W3Schools' mission:</label>
+      currentDisplay = (
+        <FinalSelectionContainer>
+          <div className="content-container"> 
+            <Box isDisabled={true} />
+            <div>
+              <label for="bonBonMessage">Include a Mesage</label>
+              <textarea id="bonBonMessage" rows="10" cols="40"></textarea>
+            </div>
+          </div>
 
-          <textarea id="w3mission" rows="4" cols="50">
-            At w3schools.com you will learn how to make a website. We offer free
-            tutorials in all web development technologies.
-          </textarea>
-          <Box isDisabled={true} />
-        </div>
+          <div className="button-container">
+            <button
+              className="proceedBtn"
+              onClick={() => dispatch(previousStep())}
+            >
+              Prev Step
+            </button>
+            <Button
+              btnType="cart"
+              clicked={() => dispatch(addToCart(bonbonPurchase))}
+            >
+              Add to Cart <br />${bonbonPurchase.price}
+            </Button>
+          </div>
+        </FinalSelectionContainer>
       );
+      break;
+
     default:
       break;
   }
 
   if (displayBonBonSelection) {
-    BonBonSelectionTest = <BonBonSelection />;
-  }
-
-  let myBreadCrumbs;
-
-  if (step === 1) {
-    myBreadCrumbs = (
-      <BreadCrumbs>
-        <button className="test" onClick={() => dispatch(reset())}>
-          Step 1
-        </button>
-        <button disabled>Step 2</button>
-        <button disabled>Step 3</button>
-      </BreadCrumbs>
-    );
-  } else if (step === 2) {
-    myBreadCrumbs = (
-      <BreadCrumbs>
-        <button className="test" onClick={() => dispatch(reset())}>
-          Step 1
-        </button>
-        <button className="test" disabled>
-          Step 2
-        </button>
-        <button disabled>Step 3</button>
-      </BreadCrumbs>
-    );
-  } else {
-    myBreadCrumbs = (
-      <BreadCrumbs>
-        <button className="test" onClick={() => dispatch(reset())}>
-          Step 1
-        </button>
-        <button className="test" onClick={() => dispatch(previousStep())}>
-          Step 2
-        </button>
-        <button className="test" disabled>
-          Step 3
-        </button>
-      </BreadCrumbs>
-    );
+    BonBonOverlay = <BonBonSelection />;
   }
 
   return (
     <BonBonContainer>
-      {BonBonSelectionTest}
-
-      {myBreadCrumbs}
-      {BoxTest}
-      {BoxSelectionTest}
-      {FinalSelection}
+      {BonBonOverlay}
+      <Breadcrumbs currentStep={step} stages={["Size", "Flavors", "Message"]} />
+      {currentDisplay}
     </BonBonContainer>
   );
 };
+
+const FinalSelectionContainer = styled.div`
+  label {
+    display: block;
+  }
+  > * {
+    margin: 0 auto;
+    margin-bottom: 1rem;
+  }
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+`;
 
 const BonBonContainer = styled.div`
   max-width: 1200px;
@@ -117,57 +132,28 @@ const BonBonContainer = styled.div`
     color: var(--elbowBrown);
     font-weight: bold;
   }
-`;
-const BreadCrumbs = styled.div`
-  margin: 1rem auto;
-  width: fit-content;
-  button {
-    width: 100px;
-    height: 30px;
-    background: #efefef;
-    border: 0;
-    position: relative;
-    &::after {
-      content: "";
-      display: block;
-      position: absolute;
-      width: 30px;
-      height: 30px;
-      background: #efefef
-      right: -14px;
-      top: 0;
-      border-radius: 50%;
-      // transform: rotate(45deg) translate(-8px, -13px);
-      // transform-origin: 50% 50%;
-      z-index: 50;
+  .content-container{
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    flex-wrap: wrap-reverse;
+    > * {
+      margin: 0.25rem;
     }
   }
-  .test {
-    background: var(--elbowBrown);
-    color: #efefef;
-    font-weight: bold;
-
-    &::after{
-      content: "";
-      display: block;
-      position: absolute;
-      width: 30px;
-      height: 30px;
-      right: -14px;
-      top: 0;
-      border-radius: 50%;
-      // transform: rotate(45deg) translate(-8px, -13px);
-      // transform-origin: 50% 50%;
-      z-index: 50;
-      background: var(--elbowBrown);
+  .button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 1rem auto;
+    button {
+      margin: 0.25rem;
+      height: fit-content;
+      &:disabled {
+        color: #aaa;
+      }
     }
-  }
-  button[disabled] {
-    color: #000;
-  }
-  .test[disabled]{
-    color: #efefef;
-    font-weight: bold;
   }
 `;
 

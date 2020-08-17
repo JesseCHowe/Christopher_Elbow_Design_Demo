@@ -46,3 +46,9 @@ export const setDimensions = dimensions => {
     dimensions
   };
 };
+export const setBonBon = bonbon => {
+  return {
+    type: actionTypes.SET_BONBON,
+    bonbon
+  }
+}

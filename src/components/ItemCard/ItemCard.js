@@ -28,82 +28,146 @@ const ItemCard = props => {
   }
   return (
     <Item>
-      <img
-        src={require(`../../assets/images/${props.product.image}.jpg`)}
-        alt=""
-      />
-      <Link className="title" to={`/product/hazlenut`}>
+      <div className={`${props.viewMode}-body`}>
+      <div className="shop-item-image ">
+        <img
+          src={require(`../../assets/images/${props.product.image}.jpg`)}
+          alt=""
+        />
+      </div>
+      <div className="shop-item-desc">
+        <div>
+        <Link className="title" to={`/product/hazlenut`}>
         {props.product.name}
       </Link>
       <div className="btnContainer">
         <span>${props.product.price}</span>
-
         {cartBtn}
+      </div>
+        </div>
+      </div>
       </div>
     </Item>
   );
 };
 
 const Item = styled.div`
+.list-body {
+  display: grid;
+  grid-template-columns: 2fr 3fr;
+  margin-bottom: 1rem;
+  box-sizing: border-box;
   background: #fff;
-  // max-height: 400px;
-  min-height: 234px;
-  box-sizing: border-box;
-  @media (max-width: 600px) {
-    margin: 0;
-    align-self: center;
-  }
-  .title {
-    font-size: 0.8rem;
-    text-transform: uppercase;
-    text-decoration: none;
-    color: #aaa;
-    font-weight: bold;
-  }
-  .btnContainer {
+  padding: 0.5rem;
+  border: 1px solid #c3c3c3;
+  .shop-item-desc{
     display: flex;
-    justify-content: space-between;
-    margin-top: 1rem;
+    align-items: center;
   }
-  .price {
-    font-size: 1rem;
-    text-transform: uppercase;
-    text-decoration: none;
-    color: #533118;
+  .title{
+      font-weight: bold;
+  
+      display: block;
+      color: #333;
+      text-decoration: none;
+  }
+  span {
+    color: gray;
     font-weight: bold;
   }
-  box-sizing: border-box;
-  position: relative;
-  // align-self: stretch;
+    img {
+      display: block;
+      margin: 0 auto;
+      max-width: 100%;
+      height: auto;
+      }
+      p {
+        text-align: center;
+      }
+          .shop-item-image {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+      }
+}
 
-  margin: 0.5rem;
-  padding: 1rem;
-  > * {
+.gallery-body{
+  background: #fff;
+  box-sizing: border-box;
+  padding: 0.5rem;
+  border: 1px solid #c3c3c3;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  .title {
     display: block;
-    // text-align: center;
+    text-align: center;
+    color: #333;
+    text-decoration: none;
+    margin-bottom: 1rem;
   }
   img {
-    max-height: 150px;
-    width: auto;
-    margin: 0 auto;
-  }
-  &::before {
-    box-sizing: border-box;
-    content: "";
     display: block;
-    border: 2px solid #efefef;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    z-index: -1;
-    transition: 0.25s;
-  }
-  box-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
+    margin: 0 auto;
+    max-width: 100%;
+    height: auto;
+    }
+    p {
+      text-align: center;
+    }
+    .btnContainer{
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      flex-wrap: wrap;
+      span {
+        color: gray;
+        font-weight: bold;
+      }
+    }
 
-  &:hover {
-    box-shadow: 0 0 3px rgba(0, 0, 0, 1);
-  }
+    .shop-item-image {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+    }
+}
+
 `;
+
+// const Item = styled.div`
+  // box-sizing: border-box;
+  // background: #fff;
+  // padding: 0.5rem;
+  // border: 1px solid #c3c3c3;
+  // display: flex;
+  // flex-direction: column;
+  // justify-content: space-between;
+  // .title {
+  //   display: block;
+  //   text-align: center;
+  //   color: #333;
+  //   text-decoration: none;
+  // }
+  // img {
+  //   display: block;
+  //   margin: 0 auto;
+  //   max-width: 100%;
+  //   height: auto;
+  //   }
+  //   p {
+  //     text-align: center;
+  //   }
+
+  //   .shop-item-image {
+  //     display: flex;
+  //     justify-content: center;
+  //     align-items: center;
+  //     height: 100%;
+  //   }
+// `;
 
 export default ItemCard;

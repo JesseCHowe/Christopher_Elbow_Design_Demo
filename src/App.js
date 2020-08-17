@@ -9,10 +9,11 @@ import _404 from "./containers/_404";
 import Cart from "./containers/Cart";
 import Home from "./containers/Home";
 import Bonbons from "./containers/Bonbons";
+
 const App = () => {
   return (
     <React.Fragment>
-      <Nav />
+      <Nav/>
       <Switch>
         <Route path="/chocolate-bars" component={ChocolateBars}></Route>
         <Route path="/cart" component={Cart}></Route>
@@ -20,7 +21,6 @@ const App = () => {
         <Route path="/product/:id" component={Product}></Route>
         <Route path="/artisan-confections" component={Confections}></Route>
         <Route path="/" component={Home}></Route>
-
         <Route component={_404}></Route>
       </Switch>
     </React.Fragment>

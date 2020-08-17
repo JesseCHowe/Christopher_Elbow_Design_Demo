@@ -5,20 +5,20 @@ import { useSelector, useDispatch } from "react-redux";
 import {
   setItemIndex,
   bonBonSelection,
-  nextStep
+  nextStep,
 } from "../../../store/actions/bonBons";
 
-const Box = props => {
+const Box = (props) => {
   const dispatch = useDispatch();
-  const bonBons = useSelector(state => state.bonBons.items);
-  const dimensions = useSelector(state => state.bonBons.dimensions);
+  const bonBons = useSelector((state) => state.bonBons.items);
+  const dimensions = useSelector((state) => state.bonBons.dimensions);
   const total = dimensions[0] * dimensions[1];
   const ratio = dimensions[0] / dimensions[1];
   const columns = [];
   const rows = [];
   const itemArray = [];
 
-  const renderBonBonSelection = idx => {
+  const renderBonBonSelection = (idx) => {
     dispatch(setItemIndex(idx));
     dispatch(bonBonSelection(true));
   };
@@ -59,18 +59,19 @@ const BoxContainer = styled.div`
   margin: 0 auto;
   box-sizing: border-box;
   display: grid;
-  grid-column-gap: 1vw;
-  grid-row-gap: 1vw;
-  width: 100vw;
+  column-gap: 0.5rem;
+  row-gap: 0.5rem;
+  width: 95vw;
   position: relative;
-  height: ${props => `${props.ratio * 100}vw`};
-  max-width: ${props => `${props.size * 100}px`};
-  max-height: ${props => `${props.ratio * (props.size * 100)}px`};
-  grid-template-columns: ${props => props.columns};
-  grid-template-rows: ${props => props.rows};
+  height: ${(props) => `${props.ratio * 95}vw`};
+  max-width: ${(props) => `${props.size * 100}px`};
+  max-height: ${(props) => `${props.ratio * (props.size * 100)}px`};
+  grid-template-columns: ${(props) => props.columns};
+  grid-template-rows: ${(props) => props.rows};
   padding: 0.5rem;
   border: 2px solid var(--elbowBrown);
-  box-shadow: inset 1px 0 4px #000000;
+  box-shadow: inset -4px -4px 6px 0 rgba(255, 255, 255, 0.5),
+    inset 4px 4px 6px 0 rgba(116, 125, 136, 0.3);
 `;
 
 export default Box;

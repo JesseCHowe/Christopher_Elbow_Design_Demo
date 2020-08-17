@@ -3,33 +3,43 @@ import styled from "styled-components";
 import { useDispatch } from "react-redux";
 import {
   addToCart,
-  removeFromCart
+  removeFromCart,
 } from "../../../store/actions/productSelection";
 
-const QtyCounter = props => {
+const QtyCounter = (props) => {
   const dispatch = useDispatch();
 
   return (
     <QtyContainer>
-      <button onClick={() => dispatch(removeFromCart(props.product.name))}>
+    <button onClick={() => dispatch(removeFromCart(props.product.name))}>
         -
       </button>
-      {props.product.qty}
+      <span>{props.product.qty}</span>
       <button onClick={() => dispatch(addToCart(props.product.name))}>+</button>
+
     </QtyContainer>
   );
 };
 
 const QtyContainer = styled.div`
-  min-width: 100px;
-  border: 1px solid #000;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  color: #333;
   button {
+    padding: 0.25rem 0.5rem;
+    margin: 0.5rem;
     font-size: 1rem;
-    background: none;
-    border: 0;
+    background: #fff;
+    border: none;
+    border-radius: 5px;
+  }
+  span {
+    font-weight: bold;
+  }
+  @media(max-width: 800px) {
+    flex-direction: column;
+    flex-direction: column-reverse;
   }
 `;
 

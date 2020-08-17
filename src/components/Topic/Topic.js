@@ -15,22 +15,27 @@ const Topic = props => {
   }
   return (
     <ItemsContainer>
+      <div className={props.viewMode}>
       {categories.map(o => {
-        return <ItemCard key={o.name} product={o} />;
+        return <ItemCard key={o.name} product={o} viewMode={props.viewMode}/>;
       })}
+      </div>
     </ItemsContainer>
   );
 };
 
+
 const ItemsContainer = styled.div`
+.gallery {
   display: inline-grid;
-  grid-template-columns: 50% 50%;
-  text-align: center;
-  align-items: start;
-  width: 100%;
-  @media (max-width: 600px) {
-    grid-template-columns: auto;
-  }
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-auto-rows: 1fr;
+  column-gap: 1rem;
+  row-gap: 12px;
+}
+.list{
+  display: block;
+}
 `;
 
 export default Topic;

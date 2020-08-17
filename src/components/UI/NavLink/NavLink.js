@@ -28,9 +28,6 @@ const LinkElem = styled(NavLink)`
   }
   &.selectedConfection {
     color: var(--elbowWhite);
-    &::before {
-      width: 100%;
-    }
   }
 `;
 

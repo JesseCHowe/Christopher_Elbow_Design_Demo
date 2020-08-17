@@ -20,12 +20,13 @@ const ChocolateBar = styled.div`
   display: flex;
   align-items: center;
   margin: 0 auto;
-  height: 450px;
-  width: 100%;
   display: block;
-  max-width: 335px;
-  @media (max-width: 750px) {
+  height: 550px;
+  width: 100%;
+  max-width: calc(550px * 0.73);
+  @media (max-width: 450px) {
     min-width: 0px;
+    height: 410px;
     max-width: 320px;
   }
 `;

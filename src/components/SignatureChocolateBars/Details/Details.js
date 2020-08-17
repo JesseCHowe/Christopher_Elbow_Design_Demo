@@ -28,9 +28,9 @@ const Details = props => {
   return (
     <DetailsStyle>
       <ProductName>{props.product.name}</ProductName>
-      <p>
-        ${props.product.price} <span>IN STOCK</span>
-      </p>
+      <ProductPrice>
+        ${props.product.price}
+      </ProductPrice>
       <p>{props.product.desc}</p>
       {cartBtn}
     </DetailsStyle>
@@ -38,17 +38,19 @@ const Details = props => {
 };
 
 const DetailsStyle = styled.div`
-  padding: 1rem;
-  &::before {
-    content: "";
-    display: block;
-    width: 30px;
-    height: 3px;
-    background: black;
-  }
+max-width: 400px;
+margin: 0 auto;
+`;
+
+const ProductPrice = styled.p`
+color: gray;
+font-weight: bold;
+margin-top: 0;
 `;
 
 const ProductName = styled.p`
   font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 0;
 `;
 export default Details;

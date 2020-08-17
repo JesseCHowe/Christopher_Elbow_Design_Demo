@@ -22,7 +22,7 @@ const productList = props => {
               <NavSelection page={`${props.url}/${subUrl}`}>
                 {category.name}
               </NavSelection>
-            </li>
+            </li>         
           );
         })}
       </ul>
@@ -35,17 +35,10 @@ const ButtonGroup = styled.div`
     list-style-type: none;
     margin: 0;
     padding: 0;
-  }
-  @media (max-width: 750px) {
-    // box-sizing: border-box;
-    // background: coral;
-    // position: fixed;
-    // z-index: 100;
-    // top: 0;
-    // left: 0;
-    // padding: 0.5rem;
-    // width: 100%;
-    // border: 5px solid #fff;
+    li {
+      margin-bottom: 1rem;
+      font-size: 0.8rem;   
+    }
   }
 `;
 export default productList;

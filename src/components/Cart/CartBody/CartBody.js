@@ -5,13 +5,6 @@ import CartItem from "./CartItem/CartItem";
 const CartBody = props => {
   return (
     <CART_ITEMS>
-      <thead>
-        <tr>
-          <th className="item_head">Item</th>
-          <th>Qty</th>
-          <th>Subtotal</th>
-        </tr>
-      </thead>
       <tbody>
         {props.products.map(product => {
           return <CartItem key={product.name} product={product} />;
@@ -21,19 +14,24 @@ const CartBody = props => {
   );
 };
 
+
 const CART_ITEMS = styled.table`
   flex: 3;
   margin-right: 1rem;
   width: 100%;
-  border-collapse: collapse;
+  border-top: 1rem solid #efefef;
+  // border-collapse: collapse;
+
   thead {
-    border-bottom: 1px solid #000;
     .item_head {
       text-align: left;
     }
     th {
       padding-bottom: 1rem;
     }
+  }
+  tbody {
+    border-spacing: 15px;
   }
 
   tr {
@@ -42,14 +40,20 @@ const CART_ITEMS = styled.table`
 
   td {
     padding: 1rem;
-    background: #fff;
+    vertical-align: middle;
   }
-
-  .title {
-    display: grid;
-    grid-template-columns: auto 75%;
+  img {
+    border-radius: 15px;
   }
   .item_title {
+    text-align: left;
+    font-weight: bold;
+    margin-bottom: 0;
+    color: gray;
+
+  }
+  .item_price {
+    margin-top: 0.2rem;
     text-align: left;
     font-weight: bold;
   }
@@ -59,7 +63,7 @@ const CART_ITEMS = styled.table`
     text-align: center;
   }
 
-  @media (max-width: 600px) {
+  @media (max-width: 750px) {
     flex-basis: 100%;
     margin-right: 0;
 
@@ -100,28 +104,21 @@ const CART_ITEMS = styled.table`
       margin: 0 auto;
       padding: 0.25rem;
     }
-    table td {
-      border-bottom: 1px solid #ddd;
-      display: block;
-      font-size: 0.8em;
-      text-align: right;
-      padding: 1rem 0;
-    }
+    // table td {
+    //   // border-bottom: 1px solid #ddd;
+    //   display: block;
+    //   font-size: 0.8em;
+    //   text-align: right;
+    //   padding: 1rem 0;
+    // }
 
-    table td::before {
-      content: attr(data-label);
-      float: left;
-      font-weight: bold;
-      text-transform: uppercase;
-    }
+    // table td::before {
+    //   content: attr(data-label);
+    //   float: left;
+    //   font-weight: bold;
+    //   text-transform: uppercase;
+    // }
 
-    table td:last-child {
-      border-bottom: 0;
-    }
-    .SUB_TOTAL {
-      display: flex;
-      justify-content: space-between;
-    }
   }
 `;
 

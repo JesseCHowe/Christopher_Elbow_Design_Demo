@@ -52,7 +52,7 @@ const Wrapper = styled.div`
   background: #f1f0ec;
   border-radius: 5px;
   border: 1px solid gray;
-  box-shadow: 8px 0px 4px -4px #000;
+  box-shadow: 8px 0px 8px -8px #000;
   &::before {
     content: "";
     position: absolute;

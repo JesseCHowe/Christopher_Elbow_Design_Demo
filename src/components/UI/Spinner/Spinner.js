@@ -10,9 +10,9 @@ const spinner = () => {
     "pistachio-bergamot",
     "lavendar-caramel",
     "extra-dark",
-    "salted-hazlenut-praline",
+    "salted-hazelnut-praline",
     "passion-fruit-caramel",
-    "ecuadaor",
+    "ecuador",
     "raspberry",
     "rosemary",
     "venezuelan-dark",
@@ -63,7 +63,7 @@ const BonBon = styled.div`
   animation-name: ${spin};
   animation-timing-function: linear;
   background-image: ${props =>
-    `url(${require(`../../../assets/bonbons/${props.choc}.jpg`)})`};
+    `url(${require(`../../../assets/bonbons/png/${props.choc}.png`)})`};
   background-repeat: no-repeat;
   background-size: cover;
   border: 0px solid red;

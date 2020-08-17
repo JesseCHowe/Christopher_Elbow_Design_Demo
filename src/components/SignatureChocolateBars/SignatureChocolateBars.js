@@ -25,12 +25,11 @@ const SignatureChocolateBars = props => {
 };
 
 const SignatureChocolateContainer = styled.div`
-  padding: 1rem;
   display: grid;
-  grid-template-columns: 320px auto;
+  grid-template-columns: 500px auto;
   justify-items: center;
   align-items: center;
-  @media (max-width: 750px) {
+  @media (max-width: 950px) {
     display: block;
   }
   .test {

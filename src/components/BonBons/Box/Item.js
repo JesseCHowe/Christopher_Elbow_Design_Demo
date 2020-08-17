@@ -4,7 +4,6 @@ import { useDispatch } from "react-redux";
 import { setItemIndex, bonBonSelection } from "../../../store/actions/bonBons";
 const Item = props => {
   const dispatch = useDispatch();
-
   const renderBonBonSelection = idx => {
     dispatch(setItemIndex(idx));
     dispatch(bonBonSelection(true));
@@ -20,18 +19,31 @@ const Item = props => {
 };
 
 const ItemContainer = styled.button`
-  background: #efefef;
+  background-color: #ccc;
   box-sizing: border-box;
-  border-radius: 5px;
-  -moz-box-shadow: inset 1px 0 4px rgba(0, 0, 0, 0.5);
-  -webkit-box-shadow: inset 1px 0 4px rgba(0, 0, 0, 0.5);
-  box-shadow: inset 1px 0 4px rgba(0, 0, 0, 0.5);
-  background-image: ${props =>
-    props.image === "empty"
-      ? ""
-      : `url(https://www.elbowchocolates.com/media/wysiwyg/${props.image}.jpg)`};
-  background-size: cover;
+  border: 0;
+  outline: none;
+  margin: 5px solid #fff;
+  border-radius: 10%;
+  box-shadow:
+    // inset -4px -4px 6px 0 rgba(255,255,255,.5),
+    inset 4px 4px 6px 0 rgba(116, 125, 136, .3);
+
+background-image: ${props => 
+  props.image === ""
+  ? ""
+  : `url(${require(`../../../assets/bonbons/png/${props.image}.png`)})`
+};
+  background-size: contain;
   background-repeat: no-repeat;
+  background-position: center;
+
 `;
 
 export default Item;
+
+// background-image: ${props =>
+//   props.image === "empty"
+//     ? ""
+//     : `url(https://www.elbowchocolates.com/media/wysiwyg/${props.image}.jpg)`
+//   };
