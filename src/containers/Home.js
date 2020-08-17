@@ -8,25 +8,19 @@ const Home = () => {
   let homeWidth = window.innerWidth;
 
   function showTooltip(event, d) {
-    if (homeWidth > 700) {
-      if (showHome) {
+    if ((homeWidth > 700) && showHome) {
         const tooltip = document.getElementById("tooltip");
         console.log(tooltip.offsetHeight);
         let w = window.innerWidth;
         let h = window.innerHeight;
         tooltip.style.display = "inline-block";
         tooltip.innerHTML = `<h4>${d.name}</h4><p>${d.description}</p>`;
-        if (event.pageX < w / 2) {
-          tooltip.style.left = event.pageX + 20 + "px";
-        } else {
+        (event.pageX < w / 2) ? 
+          tooltip.style.left = event.pageX + 20 + "px" :
           tooltip.style.left = event.pageX - tooltip.offsetWidth - 20 + "px";
-        }
-        if (event.pageY < h / 2) {
-          tooltip.style.top = event.pageY + 20 + "px";
-        } else {
-          tooltip.style.top = event.pageY - tooltip.offsetHeight - 20 + "px";
-        }
-      }
+        (event.pageY < h / 2) ?
+        tooltip.style.top = event.pageY + 20 + "px":
+        tooltip.style.top = event.pageY - tooltip.offsetHeight - 20 + "px";
     }
   }
 
@@ -39,9 +33,7 @@ const Home = () => {
     <HomeContainer>
       <MobileLight>
         <LeadText>
-          <h2>
-            <span class="signature">SIGNATURE</span>BONBONS
-          </h2>
+          <h2><span class="signature">SIGNATURE</span>BONBONS</h2>
           <p>Available in collections of 9,21, and even 48 perfect bites</p>
           <img
             alt=""
@@ -49,7 +41,7 @@ const Home = () => {
           />
           <div class="btn-container">
             <a class="explore-flavors-btn" href="#thebonbons">
-              FLAVORS
+              <span>FLAVORS</span>
             </a>
             <button class="standard-btn">
               <NavLink to="/bonbons">
@@ -136,6 +128,8 @@ const Tooltip = styled.div`
 `;
 
 const LeadText = styled.div`
+  box-sizing: border-box;
+  padding: 1rem;
   h2 {
     color: #333;
     display: inline;
@@ -144,7 +138,6 @@ const LeadText = styled.div`
     margin: 0;
   }
   p {
-    font-weight: 100;
     margin: 0;
   }
   .signature {
@@ -158,7 +151,11 @@ const LeadText = styled.div`
       border-radius: 0;
       outline: none;
       border: 0;
+      font-size: 1rem;
+    }
+    span{
       font-size: 0.75rem;
+      font-weight: bold;
     }
     margin: 0 auto;
     width: fit-content;
@@ -189,7 +186,7 @@ const LeadText = styled.div`
 const MobileLight = styled.div`
   position: relative;
   width: 100%;
-  height: 100vh;
+  height: calc(100vh - 60px);
   background: #efefef;
   display: flex;
   align-items: center;
@@ -257,7 +254,7 @@ const ExploreBonbons = styled.div`
       color: #efefef;
       padding: 1rem;
       box-sizing: border-box;
-      border-bottom: 0.5px solid #efefef;
+      border-bottom: 0.5px solid #555;
       .bonbon-name {
         font-weight: bold;
       }

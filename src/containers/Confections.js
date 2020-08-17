@@ -257,6 +257,14 @@ const ConfectionsTitle = styled.div`
   max-width: 600px;
   margin: 0 auto;
   font-weight: 200;
+  @media(max-width: 550px) {
+    max-width: 400px;
+    margin: 0 auto;
+    h2 {
+      font-size: 2rem;
+      text-align: left;
+    }
+  }
 `;
 
 const ConfectionsContainer = styled.div`

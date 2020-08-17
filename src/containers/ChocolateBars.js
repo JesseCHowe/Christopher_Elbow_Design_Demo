@@ -95,6 +95,14 @@ h2 {
   max-width: 600px;
   margin: 0 auto;
   padding: 1rem;
+  @media(max-width: 550px) {
+    max-width: 400px;
+    margin: 0 auto;
+    h2 {
+      font-size: 2rem;
+      text-align: left;
+    }
+  }
 `;
 const PageContainer = styled.div`
   padding: 0 2rem;

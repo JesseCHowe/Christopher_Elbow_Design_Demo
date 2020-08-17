@@ -24,6 +24,7 @@ const BreadCrumbs = styled.div`
     margin-bottom: 30px;
     overflow: hidden;
     counter-reset: step;
+    padding: 0;
     li {
       list-style-type: none;
       color: #333;
