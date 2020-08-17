@@ -81,12 +81,12 @@ const BoxSelectionContainer = styled.div`
     text-align: center;
   }
   h3 {
-    margin: 0.25rem;
+    // margin: 0.25rem;
   }
   .price {
     color: gray;
     font-weight: bold;
-    margin: 0.25rem;
+    // margin: 0.25rem;
   }
   max-width: 1000px;
   margin: 0 auto;
@@ -97,14 +97,17 @@ const BoxSelectionContainer = styled.div`
     list-style-type: none;
     justify-content: space-around;
     padding: 0;
+    @media(max-width: 550px){
+      display: block;
+    }
     li {
       margin-bottom: 1rem;
       flex: 1;
+      // padding: 2rem;
     }
     button {
       background: none;
       border: 0;
-      padding: 1rem;
       margin: 0 auto;
       width: 100%;
     }

@@ -62,7 +62,7 @@ const Bonbons = () => {
     case step === 3:
       currentDisplay = (
         <FinalSelectionContainer>
-          <div className="content-container"> 
+          <div className="content-container">
             <Box isDisabled={true} />
             <div>
               <label for="bonBonMessage">Include a Mesage</label>
@@ -120,6 +120,7 @@ const FinalSelectionContainer = styled.div`
 `;
 
 const BonBonContainer = styled.div`
+  box-sizing: border-box;
   max-width: 1200px;
   margin: 0 auto;
   .proceedBtn {
@@ -132,9 +133,9 @@ const BonBonContainer = styled.div`
     color: var(--elbowBrown);
     font-weight: bold;
   }
-  .content-container{
+  .content-container {
     display: flex;
-    justify-content: center; 
+    justify-content: center;
     align-items: center;
     flex-wrap: wrap-reverse;
     > * {
