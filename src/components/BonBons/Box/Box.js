@@ -1,15 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 import Item from "./Item";
-import { useSelector, useDispatch } from "react-redux";
-import {
-  setItemIndex,
-  bonBonSelection,
-  nextStep,
-} from "../../../store/actions/bonBons";
+import { useSelector, } from "react-redux";
+
 
 const Box = (props) => {
-  const dispatch = useDispatch();
   const bonBons = useSelector((state) => state.bonBons.items);
   const dimensions = useSelector((state) => state.bonBons.dimensions);
   const total = dimensions[0] * dimensions[1];
@@ -18,10 +13,6 @@ const Box = (props) => {
   const rows = [];
   const itemArray = [];
 
-  const renderBonBonSelection = (idx) => {
-    dispatch(setItemIndex(idx));
-    dispatch(bonBonSelection(true));
-  };
 
   for (let i = 0; i < total; i++) {
     bonBons[i] ? itemArray.push(bonBons[i]) : itemArray.push("");

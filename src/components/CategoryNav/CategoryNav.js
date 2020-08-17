@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
-import CategoryInfo from "./CategoryInfo/CategoryInfo";
 import SubCategories from "./ProductList_FINAL/ProductList";
 
 const categoryNav = props => {

@@ -41,9 +41,3 @@ background-image: ${props =>
 `;
 
 export default Item;
-
-// background-image: ${props =>
-//   props.image === "empty"
-//     ? ""
-//     : `url(https://www.elbowchocolates.com/media/wysiwyg/${props.image}.jpg)`
-//   };

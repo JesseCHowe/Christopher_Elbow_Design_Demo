@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useSelector } from "react-redux";
 import { Link, NavLink } from "react-router-dom";
 import { useLocation } from "react-router-dom";
@@ -8,7 +8,6 @@ import homeLogo from "../../assets/logo/homeLogo.svg";
 import MobileNav from "./MobileNav/MobileNav";
 
 const Nav = () => {
-  let [viewMobile, setViewMobile] = useState(false);
   let location = useLocation();
   let homePage = location.pathname === "/";
   const products = useSelector((state) => state.products);
@@ -66,7 +65,6 @@ const Nav = () => {
 
   return (
     <React.Fragment>
-
       {/* <ExpandMenu>
         <div className={`${viewMobile ? 'showNav' : 'hideNav'}`}>
         {theProducts}
@@ -79,32 +77,10 @@ const Nav = () => {
           {theProducts}
         </div>
       </NavWrapper>
-      <MobileNav/>
-
+      <MobileNav />
     </React.Fragment>
   );
 };
-
-const ExpandMenu = styled.div`
-> * {
-  background: #333;
-  width: 75%;
-  left: -100%;
-  top: 0;
-  position: fixed;
-  transition: 1s;
-  height: 100vh;
-  display: block;
-  z-index: 200;
-  span {
-    color: #fff;
-    text-decoration: none;
-  }
-}
-.showNav {
-left: 0;
-}
-`;
 
 const Logo = styled.div`
   box-sizing: border-box;
