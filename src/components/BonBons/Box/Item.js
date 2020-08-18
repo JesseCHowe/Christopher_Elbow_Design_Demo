@@ -19,11 +19,9 @@ const Item = props => {
 };
 
 const ItemContainer = styled.button`
-  background-color: #ccc;
   box-sizing: border-box;
   border: 0;
   outline: none;
-  margin: 5px solid #fff;
   border-radius: 10%;
   box-shadow: inset 4px 4px 6px 0 rgba(116, 125, 136, .3);
 
