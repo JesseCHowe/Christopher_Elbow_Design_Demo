@@ -55,14 +55,12 @@ const BoxContainer = styled.div`
   width: 95vw;
   position: relative;
   height: ${(props) => `${props.ratio * 95}vw`};
-  max-width: ${(props) => `${props.size * 100}px`};
-  max-height: ${(props) => `${props.ratio * (props.size * 100)}px`};
   grid-template-columns: ${(props) => props.columns};
   grid-template-rows: ${(props) => props.rows};
   padding: 0.5rem;
   border: 2px solid var(--elbowBrown);
-  box-shadow: inset -4px -4px 6px 0 rgba(255, 255, 255, 0.5),
-    inset 4px 4px 6px 0 rgba(116, 125, 136, 0.3);
+  // box-shadow: inset -4px -4px 6px 0 rgba(255, 255, 255, 0.5),
+  //   inset 4px 4px 6px 0 rgba(116, 125, 136, 0.3);
 `;
 
 export default Box;
