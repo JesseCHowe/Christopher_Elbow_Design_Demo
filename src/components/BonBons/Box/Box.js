@@ -24,6 +24,7 @@ const Box = (props) => {
 
   return (
     <MainBoxContainer>
+      <p>RATIO: {ratio}</p>
       <BoxContainer
         rows={rows}
         dimensions={dimensions}
@@ -33,13 +34,14 @@ const Box = (props) => {
       >
         {itemArray.map((o, idx) => {
           return (
-            <Item isDisabled={props.isDisabled} key={idx} idx={idx} image={o} />
+            <div></div>
           );
         })}
       </BoxContainer>
     </MainBoxContainer>
   );
 };
+// {/* <Item isDisabled={props.isDisabled} key={idx} idx={idx} image={o} /> */}
 
 const MainBoxContainer = styled.div`
   max-width: 1200px;
@@ -73,6 +75,10 @@ const BoxContainer = styled.div`
   box-shadow:
   inset -4px -4px 6px 0 rgba(255, 255, 255, 0.5),
   inset 4px 4px 6px 0 rgba(116, 125, 136, 0.3);
+  > * {
+    box-sizing: border-box;
+    border: 1px solid red
+  }
 `;
 
 export default Box;
