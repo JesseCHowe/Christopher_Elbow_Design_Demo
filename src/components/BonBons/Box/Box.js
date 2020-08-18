@@ -66,8 +66,8 @@ const BoxContainer = styled.div`
   inset -4px -4px 6px 0 rgba(255, 255, 255, 0.5),
   inset 4px 4px 6px 0 rgba(116, 125, 136, 0.3);
   @media(max-width: 450px) {
-    max-width: 90vw;
-    max-height: ${(props) => `${props.ratio * 90}vw`};
+    max-width: 95vw;
+    max-height: ${(props) => `${props.ratio * 95}vw`};
   }
 `;
 
