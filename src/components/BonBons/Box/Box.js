@@ -60,9 +60,10 @@ const BoxContainer = styled.div`
   height: ${(props) => `${props.ratio * 95}vw`};
 
 
-
-  max-width: ${(props) => `${props.size * 75}px`};
-  max-height: ${(props) => `${props.ratio * (props.size * 75)}px`};
+  max-width: 200px;
+  max-height: ${(props) => 200 * props.ratio}px;
+  // max-width: ${(props) => `${props.size * 75}px`};
+  // max-height: ${(props) => `${props.ratio * (props.size * 75)}px`};
 
 
 
