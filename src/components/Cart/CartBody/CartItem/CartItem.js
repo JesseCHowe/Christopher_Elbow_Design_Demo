@@ -11,23 +11,25 @@ const CartItem = (props) => {
   const dispatch = useDispatch();
 
   return (
-    <CART_ITEM>
-      <td className="title">
+    <CART_ROW>
+      <td>
         <img
           alt={props.product.name}
           src={require(`../../../../assets/images/${props.product.image}.jpg`)}
         />
       </td>
-      <td>
+      <td className="item_description">
         <div>
           <p className="item_title">{props.product.name}</p>
-          <p className="item_price">${(props.product.qty * props.product.price).toFixed(2)}</p>
+          <p className="item_price">
+            ${(props.product.qty * props.product.price).toFixed(2)}
+          </p>
         </div>
       </td>
       <td>
         <QtyCounter product={props.product} />
       </td>
-      <td className="SUB_TOTAL" data-label="Subtotal">
+      <td>
         <Button
           btnType="remove"
           clicked={() => dispatch(removeAllFromCart(props.product.name))}
@@ -35,18 +37,28 @@ const CartItem = (props) => {
           <FontAwesomeIcon icon={faTrashAlt} />
         </Button>
       </td>
-    </CART_ITEM>
+    </CART_ROW>
   );
 };
 
-const CART_ITEM = styled.tr`
+const CART_ROW = styled.tr`
   background: #fff;
-  img {
-    max-width: 120px;
-    max-height: 120px;
-  }
+  color: #333;
   td {
+    padding: 1rem;
+    border-top: 0px;
     text-align: center;
+  }
+  img {
+    width: 100%;
+    max-width: 150px;
+  }
+  .item_description {
+    text-align: left;
+    font-weight: bold;
+    .item_price {
+      color: gray;
+    }
   }
 `;
 

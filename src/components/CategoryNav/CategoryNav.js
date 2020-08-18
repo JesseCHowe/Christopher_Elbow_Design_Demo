@@ -5,8 +5,6 @@ import SubCategories from "./ProductList_FINAL/ProductList";
 const categoryNav = props => {
   return (
     <CategoryNav>
-      {/* <CategoryInfo category={props.description} /> */}
-      <h1>Categories</h1>
       <SubCategories
         category={props.category}
         url={props.url}

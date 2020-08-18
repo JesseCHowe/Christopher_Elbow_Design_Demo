@@ -7,7 +7,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { reset, previousStep, nextStep } from "../store/actions/bonBons";
 import { addToCart } from "../store/actions/productSelection";
 import Button from "../components/UI/Button/Button";
-// import Breadcrumbs from "../components/UI/Breadcrumbs/Breadcrumbs";
+import Breadcrumbs from "../components/UI/Breadcrumbs/Breadcrumbs";
 
 const Bonbons = () => {
   const dispatch = useDispatch();
@@ -99,64 +99,69 @@ const Bonbons = () => {
   return (
     <BonBonContainer>
       {BonBonOverlay}
-      {/* <Breadcrumbs currentStep={step} stages={["Size", "Flavors", "Message"]} /> */}
+      <Breadcrumbs currentStep={step} stages={["Size", "Flavors", "Message"]} />
       {currentDisplay}
     </BonBonContainer>
   );
 };
 
 const FinalSelectionContainer = styled.div`
-  label {
-    display: block;
-  }
-  > * {
-    margin: 0 auto;
-    margin-bottom: 1rem;
-  }
-  max-width: 800px;
-  margin: 0 auto;
-  display: flex;
-  flex-wrap: wrap;
+  // label {
+  //   display: block;
+  // }
+  // > * {
+  //   margin: 0 auto;
+  //   margin-bottom: 1rem;
+  // }
+  // max-width: 800px;
+  // margin: 0 auto;
+  // display: flex;
+  // flex-wrap: wrap;
 `;
 
 const BonBonContainer = styled.div`
-  box-sizing: border-box;
-  max-width: 1200px;
-  padding: 1rem;
-  margin: 0 auto;
-  .proceedBtn {
-    width: fit-content;
-    margin: 1rem auto;
-    display: block;
-    padding: 1rem;
-    background: none;
-    border: 1px solid var(--elbowBrown);
-    color: var(--elbowBrown);
-    font-weight: bold;
-  }
-  .content-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap-reverse;
-    > * {
-      margin: 0.25rem;
-    }
-  }
-  .button-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    margin: 1rem auto;
-    button {
-      margin: 0.25rem;
-      height: fit-content;
-      &:disabled {
-        color: #aaa;
-      }
-    }
-  }
+box-sizing: border-box;
+border: 3px solid red;
+max-width: 1200px;
+margin: 0 auto;
 `;
 
 export default Bonbons;
+
+  // box-sizing: border-box;
+  // max-width: 1200px;
+  // padding: 1rem;
+  // margin: 0 auto;
+  // .proceedBtn {
+  //   width: fit-content;
+  //   margin: 1rem auto;
+  //   display: block;
+  //   padding: 1rem;
+  //   background: none;
+  //   border: 1px solid var(--elbowBrown);
+  //   color: var(--elbowBrown);
+  //   font-weight: bold;
+  // }
+  // .content-container {
+  //   display: flex;
+  //   justify-content: center;
+  //   align-items: center;
+  //   flex-wrap: wrap-reverse;
+  //   > * {
+  //     margin: 0.25rem;
+  //   }
+  // }
+  // .button-container {
+  //   display: flex;
+  //   justify-content: center;
+  //   align-items: center;
+  //   width: 100%;
+  //   margin: 1rem auto;
+  //   button {
+  //     margin: 0.25rem;
+  //     height: fit-content;
+  //     &:disabled {
+  //       color: #aaa;
+  //     }
+  //   }
+  // }

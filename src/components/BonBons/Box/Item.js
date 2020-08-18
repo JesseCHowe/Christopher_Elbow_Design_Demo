@@ -25,9 +25,7 @@ const ItemContainer = styled.button`
   outline: none;
   margin: 5px solid #fff;
   border-radius: 10%;
-  box-shadow:
-    // inset -4px -4px 6px 0 rgba(255,255,255,.5),
-    inset 4px 4px 6px 0 rgba(116, 125, 136, .3);
+  box-shadow: inset 4px 4px 6px 0 rgba(116, 125, 136, .3);
 
 background-image: ${props => 
   props.image === ""

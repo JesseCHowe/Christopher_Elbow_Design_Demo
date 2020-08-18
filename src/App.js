@@ -1,5 +1,6 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
+import 'normalize.css';
 import "./App.css";
 import Nav from "./components/Nav/Nav";
 import Confections from "./containers/Confections";
