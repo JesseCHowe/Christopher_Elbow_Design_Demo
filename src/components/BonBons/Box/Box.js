@@ -62,8 +62,13 @@ const BoxContainer = styled.div`
   grid-template-rows: ${(props) => props.rows};
   padding: 0.5rem;
   border: 2px solid var(--elbowBrown);
-  // box-shadow: inset -4px -4px 6px 0 rgba(255, 255, 255, 0.5),
-  //   inset 4px 4px 6px 0 rgba(116, 125, 136, 0.3);
+  box-shadow:
+  inset -4px -4px 6px 0 rgba(255, 255, 255, 0.5),
+  inset 4px 4px 6px 0 rgba(116, 125, 136, 0.3);
+  @media(max-width: 450px) {
+    max-width: 90vw;
+    max-height: ${(props) => `${props.ratio * 90}vw`};
+  }
 `;
 
 export default Box;
