@@ -20,10 +20,10 @@ const Item = props => {
 
 const ItemContainer = styled.button`
   box-sizing: border-box;
-  border: 0;
+  border: 1px solid #000;
   outline: none;
-  border-radius: 10%;
-  box-shadow: inset 4px 4px 6px 0 rgba(116, 125, 136, .3);
+  // border-radius: 10%;
+  // box-shadow: inset 4px 4px 6px 0 rgba(116, 125, 136, .3);
 
 background-image: ${props => 
   props.image === ""
