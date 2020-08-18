@@ -52,9 +52,20 @@ const BoxContainer = styled.div`
   display: grid;
   column-gap: 0.5rem;
   row-gap: 0.5rem;
-  width: 95vw;
   position: relative;
+
+
+
+  width: 95vw;
   height: ${(props) => `${props.ratio * 95}vw`};
+
+
+
+  max-width: ${(props) => `${props.size * 75}px`};
+  max-height: ${(props) => `${props.ratio * (props.size * 75)}px`};
+
+
+
   grid-template-columns: ${(props) => props.columns};
   grid-template-rows: ${(props) => props.rows};
   padding: 0.5rem;
