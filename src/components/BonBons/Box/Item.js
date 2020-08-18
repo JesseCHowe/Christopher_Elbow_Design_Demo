@@ -18,7 +18,7 @@ const Item = props => {
   );
 };
 
-const ItemContainer = styled.button`
+const ItemContainer = styled.div`
   box-sizing: border-box;
   border: 1px solid #000;
   outline: none;

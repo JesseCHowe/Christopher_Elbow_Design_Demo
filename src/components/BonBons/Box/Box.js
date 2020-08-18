@@ -26,6 +26,7 @@ const Box = (props) => {
     <MainBoxContainer>
       <BoxContainer
         rows={rows}
+        dimensions={dimensions}
         columns={columns}
         ratio={ratio}
         size={dimensions[1]}
@@ -52,14 +53,21 @@ const BoxContainer = styled.div`
   row-gap: 0.5rem;
   position: relative;
 
-  width: 95vw;
-  height: ${(props) => `${props.ratio * 95}vw`};
+  // grid-template-columns: ${(props) => props.columns};
+  // grid-template-rows: ${(props) => props.rows};
+  grid-template-columns: ${(props) => props.rows};
+  grid-template-rows: ${(props) => props.columns};
 
-  max-width: ${(props) => `${props.size * 75}px`};
-  max-height: ${(props) => `${props.ratio * (props.size * 75)}px`};
+  // width: 95vw;
+  // height: ${(props) => `${props.ratio * 95}vw`};
+  width: ${(props) => `${props.ratio * 95}vw`};
+  height: 95vw;
 
-  grid-template-columns: ${(props) => props.columns};
-  grid-template-rows: ${(props) => props.rows};
+  // max-width: ${(props) => `${props.size * 75}px`};
+  // max-height: ${(props) => `${props.ratio * (props.size * 75)}px`};
+  max-height: ${(props) => `${props.size * 75}px`};
+  max-width: ${(props) => `${props.ratio * (props.size * 75)}px`};
+
   padding: 0.5rem;
   border: 2px solid var(--elbowBrown);
   box-shadow:
