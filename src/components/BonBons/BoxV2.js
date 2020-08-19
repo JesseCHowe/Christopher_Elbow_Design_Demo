@@ -1,22 +1,35 @@
 import React from "react";
 import styled from "styled-components";
 // import Item from "./Item";
-// import { useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 
 const BoxV2 = props => {
-  // const bonBons = useSelector((state) => state.bonBons.items);
-  // const dimensions = useSelector((state) => state.bonBons.dimensions);
-  // const total = dimensions[0] * dimensions[1];
-  // const ratio = dimensions[0] / dimensions[1];
-  // const columns = [];
-  // const rows = [];
+  const bonBons = useSelector((state) => state.bonBons.items);
+  const dimensions = useSelector((state) => state.bonBons.dimensions);
+  const ratio = dimensions[0] / dimensions[1];
+
+  // const dummmy_dimensions = [6,8];
+  // const dummy_ratio = dummmy_dimensions[0] / dummmy_dimensions[1];
+
   const itemArray = [
-    [1,2],
-    [3,4]
   ];
 
+  let newNum = 0;
+  for(let i = 0; i < dimensions[0]; i++) {
+    const newArr = [];
+    for(let j = 0; j < dimensions[1]; j++) {
+      newArr.push(bonBons[newNum] ? bonBons[newNum] : "");
+      newNum++
+    }
+    itemArray.push(newArr)
+  }
+
+
   return (
-    <STYLE_TABLE>
+    <STYLE_TABLE
+    ratio={ratio}
+    size={dimensions[1]}
+    >
       {itemArray.map(o => {
         return (
           <tr>
@@ -34,18 +47,18 @@ const BoxV2 = props => {
 }
 
 const STYLE_TABLE = styled.table`
-margin: 0 auto;
+  margin: 0 auto;
   position: relative;
 
   width:  95vw;
-  height: calc(95vw * (2/2));
-
-  max-width: calc(100px * 2);
-  max-height: calc(100px * 2);
+  height: ${props => `${95 * props.ratio}vw`};
+  max-width: ${(props) => `${(props.size * 75)}px`};
+  max-height: ${(props) => `${(props.size * 75)* props.ratio}px`};
 
 padding: 2px;
   border: 1px solid #000;
   td {
+    text-align: center;
     box-sizing: border-box;
     border: 1px solid blue;
   }
