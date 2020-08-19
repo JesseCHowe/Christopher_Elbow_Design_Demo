@@ -1,15 +1,20 @@
 import React from "react";
 import styled from "styled-components";
-// import Item from "./Item";
 import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { setItemIndex, bonBonSelection } from "../../store/actions/bonBons";
 
 const BoxV2 = props => {
+
+  const dispatch = useDispatch();
+  const renderBonBonSelection = idx => {
+    dispatch(setItemIndex(idx));
+    dispatch(bonBonSelection(true));
+  };
+
   const bonBons = useSelector((state) => state.bonBons.items);
   const dimensions = useSelector((state) => state.bonBons.dimensions);
   const ratio = dimensions[0] / dimensions[1];
-
-  // const dummmy_dimensions = [6,8];
-  // const dummy_ratio = dummmy_dimensions[0] / dummmy_dimensions[1];
 
   const itemArray = [
   ];
@@ -24,7 +29,7 @@ const BoxV2 = props => {
     itemArray.push(newArr)
   }
 
-
+  let idx = 0;
   return (
     <STYLE_TABLE
     ratio={ratio}
@@ -33,9 +38,14 @@ const BoxV2 = props => {
       {itemArray.map(o => {
         return (
           <tr>
-            {o.map(j => {
+            {o.map(o => {
+              let i = idx;
+              idx++;
               return(
-                <td>{j}</td>
+                <STYLE_TD
+                onClick={() => renderBonBonSelection(i)}
+                image={o}
+                />
               )
             })}
           </tr>
@@ -55,13 +65,24 @@ const STYLE_TABLE = styled.table`
   max-width: ${(props) => `${(props.size * 75)}px`};
   max-height: ${(props) => `${(props.size * 75)* props.ratio}px`};
 
-padding: 2px;
-  border: 1px solid #000;
-  td {
-    text-align: center;
-    box-sizing: border-box;
-    border: 1px solid blue;
-  }
+// padding: 2px;
+border-spacing: 0.35rem;
+  border: 2px solid #333;
+`;
+
+const STYLE_TD = styled.td`
+box-sizing: border-box;
+border-radius: 10%;
+box-shadow: inset 4px 4px 6px 0 rgba(116, 125, 136, .3);
+background-color: #e6e6e6;
+background-image: ${props => 
+  props.image === ""
+  ? ""
+  : `url(${require(`../../assets/bonbons/png/${props.image}.png`)})`
+};
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 `;
 
 export default BoxV2
