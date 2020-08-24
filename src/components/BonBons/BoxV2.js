@@ -57,16 +57,13 @@ const BoxV2 = props => {
 }
 
 const STYLE_TABLE = styled.table`
-  margin: 0 auto;
+  margin: 1rem auto;
   position: relative;
-
   width:  95vw;
   height: ${props => `${95 * props.ratio}vw`};
-  max-width: ${(props) => `${(props.size * 75)}px`};
-  max-height: ${(props) => `${(props.size * 75)* props.ratio}px`};
-
-// padding: 2px;
-border-spacing: 0.35rem;
+  max-width: ${(props) => `${(props.size * 90)}px`};
+  max-height: ${(props) => `${(props.size * 90)* props.ratio}px`};
+  border-spacing: 0.35rem;
   border: 2px solid #333;
 `;
 

@@ -13,7 +13,6 @@ export const previousStep = () => {
 };
 
 export const addBonBon = bonbon => {
-  console.log("adding bonBon");
   return {
     type: actionTypes.ADD_BONBON,
     bonbon

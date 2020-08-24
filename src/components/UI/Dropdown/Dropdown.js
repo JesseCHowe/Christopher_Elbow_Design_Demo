@@ -56,6 +56,7 @@ const Dropdown = (props) => {
       </Header>
       {
         open && (
+
           <List>
             {dropDownItems}
           </List>
@@ -70,6 +71,11 @@ const List = styled.ul`
 background: #fff;
 margin: 0;
 padding: 0;
+// height: 100vh;
+// position: fixed;
+// width: 100%;
+// top: 0;
+// left: 0;
 li {
   list-style-type:none;
   margin: 0;

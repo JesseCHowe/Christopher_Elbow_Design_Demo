@@ -24,7 +24,6 @@ const bonBons = (state = initalState, action) => {
     case actionTypes.ADD_BONBON:
       let newArray = state.items.slice();
       newArray[state.currentIndex] = action.bonbon;
-      console.log("new bonBon", newArray);
       return {
         ...state,
         items: newArray

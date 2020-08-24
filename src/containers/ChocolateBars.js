@@ -6,6 +6,7 @@ import SignatureChocolateBars from "../components/SignatureChocolateBars/Signatu
 import axios from "../axios";
 import Spinner from "../components/UI/Spinner/Spinner";
 import Dropdown from "../components/UI/Dropdown/Dropdown";
+import Header from "../components/UI/Header/Header";
 
 const ChocolateBars = () => {
   let [chocolateData, setChocolateData] = useState(null);
@@ -58,10 +59,13 @@ let newDrop;
 
   return (
     <React.Fragment>
-      <Confections>
-    <h2><span className="signature">Signature</span>Chocolate Bars</h2>
-  <p>From dark chocolate covered nuts to rich buttery toffee, these classic confections have been deliciously re-imagined with the highest quality gourmet chocolate and best ingredients from around the world.</p>
-</Confections>
+    <Header
+    sub={"signature"}
+        title={"Chocolate Bars"}
+        description={
+          "Our chocolate bars are crafted with the same meticulous care as our beautiful chocolate bonbons. We offer both our signature bar and our craft chocolate bar collections, both using only the finest ingredients."
+        }
+      />
     <PageContainer>
       {category}
       {newDrop}

@@ -18,12 +18,9 @@ const MobileNav = () => {
     <React.Fragment>
       <Backdrop show={viewMobile} clicked={() => setViewMobile(false)} />
       <NavWrapper>
-        <ExpandButton
-          className="expndBtn"
-          onClick={() => setViewMobile(true)}
-        >
-        <FontAwesomeIcon icon={faBars} />
-</ExpandButton>
+        <ExpandButton className="expndBtn" onClick={() => setViewMobile(true)}>
+          <FontAwesomeIcon icon={faBars} />
+        </ExpandButton>
         <Nav myTest={`${viewMobile ? "0" : "-100"}`}>
           <ul>
             <li>
@@ -84,7 +81,7 @@ const MobileNav = () => {
 };
 
 const NavWrapper = styled.div`
-  @media (min-width: 700px) {
+  @media (min-width: 800px) {
     display: none;
   }
 `;
@@ -92,31 +89,39 @@ const ExpandButton = styled.button`
   font-size: 1.5rem;
   border: none;
   padding: 1rem;
+  background: none;
 `;
 
 const Nav = styled.div`
-  background: #333;
-  width: 75%;
   left: ${(props) => props.myTest}%;
   top: 0;
-  position: fixed;
+  transition: 1s;
+  text-transform: uppercase;
+  background: #fff;
+  box-shadow: 2px 0px 4px rgba(0, 0, 0, 0.3);
+  z-index: 500;
+  width: 100%;
+  max-width: 300px;
   height: 100vh;
-  display: block;
-  z-index: 200;
-  color: #fff;
+  position: fixed;
+  transition: 1s;
   ul {
-    max-width: 600px;
-    width: 100%;
-    margin: 0 auto;
+    padding: 0;
+    margin: 0;
     list-style-type: none;
-    padding: 0.5rem;
-    font-size: 0.85rem;
+    li {
+      border: 0;
+      border-bottom: 1px solid #333;
+      display: block;
+      padding: 1rem;
+      text-align: left;
+    }
   }
   a {
     text-decoration: none;
   }
   span {
-    color: #fff;
+    color: #000;
     font-size: 1rem;
   }
 `;

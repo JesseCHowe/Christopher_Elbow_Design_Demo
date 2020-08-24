@@ -116,15 +116,18 @@ const HomeContainer = styled.div`
 `;
 
 const Tooltip = styled.div`
-  background: #000;
+  background: #fff;
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.4);
-  color: #efefef;
   display: none;
-  font-size: 0.7em;
+  font-size: 0.75rem;
   max-width: 200px;
   padding: 7px 9px;
   position: absolute;
   text-align: left;
+  h4 {
+    margin: 0.4rem 0;
+    border-bottom: 1px solid #ccc;
+  }
 `;
 
 const LeadText = styled.div`
@@ -187,7 +190,7 @@ const MobileLight = styled.div`
   position: relative;
   width: 100%;
   height: calc(100vh - 60px);
-  background: #efefef;
+  background: #fff;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -202,7 +205,7 @@ const Light = styled.div`
   position: absolute;
   width: 50%;
   height: 100%;
-  background: #efefef;
+  background: #fff;
   display: flex;
   align-items: center;
   justify-content: center;

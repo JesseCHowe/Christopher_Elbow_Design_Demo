@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import ItemCard from "../ItemCard/ItemCard";
+import ItemCard from "./ItemCard/ItemCard";
 import { useParams } from "react-router-dom";
 
 const Topic = props => {
@@ -24,7 +24,6 @@ const Topic = props => {
   );
 };
 
-
 const ItemsContainer = styled.div`
 .gallery {
   display: inline-grid;
@@ -35,6 +34,11 @@ const ItemsContainer = styled.div`
 }
 .list{
   display: block;
+}
+@media(max-width: 700px) {
+  .gallery {
+    display: block;
+  }
 }
 `;
 

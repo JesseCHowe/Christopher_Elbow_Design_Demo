@@ -12,3 +12,6 @@ export const RESET_BONBON = "RESET_BONBON";
 export const SET_INDEX = "SET_INDEX";
 export const TOGGLE_BONBON_SELECTION = "TOGGLE_BONBON_SELECTION";
 export const SET_DIMENSIONS = "SET_DIMENSIONS";
+
+export const SET_SORT_MODE = "SET_SORT_MODE";
+export const SET_VIEW_MODE = "SET_VIEW_MODE";

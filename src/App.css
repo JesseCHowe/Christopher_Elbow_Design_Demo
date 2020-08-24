@@ -2,14 +2,14 @@
 
 :root {
   --elbowBrown: #533118;
-  --elbowWhite: #efefef;
+  --elbowWhite: #fff;
   --elbowGray: #aaa;
   --elbowDark: #333;
 
   --mainBlue: #2a2a72;
   --lightBlue: #009ffd;
-  --mainWhite: #efefef;
-  --mainDark: #232528;
+  --mainWhite: #fff;
+  --mainDark: #333;
   --mainYellow: #f0efec;
   --navHeight: 65px;
 }

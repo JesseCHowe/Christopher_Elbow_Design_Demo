@@ -95,6 +95,7 @@ li {
 button {
   border: none;
   flex: 1;
+  background: none;
 }
 `;
 
