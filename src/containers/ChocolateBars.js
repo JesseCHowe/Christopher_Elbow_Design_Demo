@@ -77,37 +77,6 @@ let newDrop;
   );
 };
 
-const Confections = styled.div`
-padding: 1rem;
-h2 {
-  font-family: 'Open Sans', sans-serif;
-      text-align: center;
-      text-transform: uppercase;
-    font-size: 4rem;
-    font-weight: bold;
-    color: #333;
-    margin: 0;
-    padding: 0;
-  }
-  .signature {
-    font-size: 1rem;
-    margin-bottom: 0;
-    color: gray;
-    display: block;
-    text-align: left;
-  }  
-  max-width: 600px;
-  margin: 0 auto;
-  padding: 1rem;
-  @media(max-width: 550px) {
-    max-width: 400px;
-    margin: 0 auto;
-    h2 {
-      font-size: 2rem;
-      text-align: left;
-    }
-  }
-`;
 const PageContainer = styled.div`
   padding: 0 2rem;
   display: grid;
