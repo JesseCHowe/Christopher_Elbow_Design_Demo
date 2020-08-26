@@ -6,7 +6,7 @@ const Lead = props => {
   return (    
     <Light testViz={props.showHome}>
     <LeadText>
-          <h2><span class="signature">CHRIPSTOPHER</span>ELBOW</h2>
+          <h2><span class="signature">CHRISTOPHER</span>ELBOW</h2>
           <p>Modern culinary artistry together with a craftsman-like work ethic to create beautiful, decadent expressions of flavors from around the world. And we’re proud to deliver them straight to you.</p>
           <div class="btn-container">
             <button class="explore-flavors-btn" onClick={props.clicked}>
