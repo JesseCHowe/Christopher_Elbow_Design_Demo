@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { addToCart } from "../../../../../store/actions/productSelection";
-import Button from "../../../../UI/Button/Button";
+import Button from "../../../../UI/Button";
 
 const ItemCard = (props) => {
   const dispatch = useDispatch();
@@ -59,18 +59,6 @@ const ItemCard = (props) => {
 
 const Item = styled.div`
   font-weight: bold;
-  > * {
-    display: grid;
-    grid-template-columns: 2fr 3fr;
-    margin-bottom: 1rem;
-    box-sizing: border-box;
-    padding: 0.5rem;
-    border: 1px solid #c3c3c3;
-  }
-  .shop-item-desc {
-    display: flex;
-    align-items: center;
-  }
   img {
     display: block;
     margin: 0 auto;
@@ -79,32 +67,44 @@ const Item = styled.div`
   span {
     color: gray;
   }
+  > * {
+    border: 1px solid #c3c3c3;
+    box-sizing: border-box;
+    display: grid;
+    grid-template-columns: 2fr 3fr;
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+  }
+  .shop-item-desc {
+    align-items: center;
+    display: flex;
+  }
   .title {
     color: #333;
     text-decoration: none;
   }
   @media (min-width: 700px) {
     .gallery-mode {
-      text-align: center;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
       height: 100%;
+      justify-content: space-between;
       margin-bottom: 0;
+      text-align: center;
       .btnContainer {
+        align-items: center;
         display: flex;
-        padding: 0.5rem 1rem;
         justify-content: space-between;
-        align-items: center;
-      }
-      .shop-item-image {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100%;
+        padding: 0.5rem 1rem;
       }
       .shop-item-desc {
         display: block;
+      }
+      .shop-item-image {
+        align-items: center;
+        display: flex;
+        height: 100%;
+        justify-content: center;
       }
     }
   }

@@ -5,7 +5,7 @@ import { useLocation } from "react-router-dom";
 import styled from "styled-components";
 import logo from "../../assets/logo/logo.svg";
 import homeLogo from "../../assets/logo/homeLogo.svg";
-import MobileNav from "./MobileNav/MobileNav";
+import MobileNav from "./MobileNav";
 
 const Nav = () => {
   let location = useLocation();
@@ -17,11 +17,8 @@ const Nav = () => {
   );
 
   let theLogo;
-  if (homePage) {
-    theLogo = <HomeLogo />;
-  } else {
-    theLogo = <Logo />;
-  }
+  homePage ? (theLogo = <HomeLogo />) : (theLogo = <Logo />);
+
   let theLink = (
     <Link className="nav__link" to="/">
       {theLogo}
@@ -65,12 +62,6 @@ const Nav = () => {
 
   return (
     <React.Fragment>
-      {/* <ExpandMenu>
-        <div className={`${viewMobile ? 'showNav' : 'hideNav'}`}>
-        {theProducts}
-        </div>
-      </ExpandMenu> */}
-
       <NavWrapper>
         <div className={homePage ? "home" : "standard"}>
           {theLink}
@@ -83,95 +74,68 @@ const Nav = () => {
 };
 
 const Logo = styled.div`
-  box-sizing: border-box;
-  float: left;
-  width: 2.55rem;
-  height: 2.55rem;
+  align-items: center;
   background: none;
   border: 2px solid #333;
+  box-sizing: border-box;
   display: flex;
-  align-items: center;
+  float: left;
+  height: 2.55rem;
+  width: 2.55rem;
   &::after {
-    content: "";
-    display: block;
-    width: 3rem;
-    height: 3rem;
-    margin: 2rem auto;
     background-image: url(${logo});
     background-position: center;
-    background-size: 40%;
     background-repeat: no-repeat;
+    background-size: 40%;
+    content: "";
+    display: block;
+    height: 3rem;
+    margin: 2rem auto;
+    width: 3rem;
   }
 `;
 
 const HomeLogo = styled.div`
-  box-sizing: border-box;
-  float: left;
-  width: 2.55rem;
-  height: 2.55rem;
+  align-items: center;
   background: none;
   border: 2px solid #fff;
+  box-sizing: border-box;
   display: flex;
-  align-items: center;
+  float: left;
+  height: 2.55rem;
+  width: 2.55rem;
   &::after {
-    content: "";
-    display: block;
-    width: 3rem;
-    height: 3rem;
-    margin: 2rem auto;
     background-image: url(${homeLogo});
     background-position: center;
-    background-size: 40%;
     background-repeat: no-repeat;
+    background-size: 40%;
+    content: "";
+    display: block;
+    height: 3rem;
+    margin: 2rem auto;
+    width: 3rem;
   }
 `;
 
 const NavWrapper = styled.nav`
-@media (max-width: 800px) {
-  display: none;
-}
   position: relative;
+  h1 {
+    color: #533118;
+    display: inline;
+    font-family: "EB Garamond", serif;
+    font-weight: 500;
+    margin: 0.5rem;
+  }
   > * {
-    top: 0;
+    align-items: center;
+    box-sizing: border-box;
+    display: flex;
     height: 65px;
-    width: 100%;
     margin: 0 auto;
     max-width: 1200px;
-    display: flex;
-    align-items: center;
     padding: 1rem;
-    box-sizing: border-box;
-  }
-  .home {
-    position: fixed;
-    left: 50%;
-    transform: translate(-50%, 0);
-    z-index: 300;
-    mix-blend-mode: difference;
-    span {
-      color: #fff;
-    }
-  }
-  .standard {
-
-  }
-  .nav__link {
-    text-decoration: none;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    svg {
-      fill: #fff;
-    }
-    span {
-      font-size: 0.5rem;
-      display: block;
-      text-align: center;
-      font-family: "Cabin", sans-serif;
-    }
-  }
-  .cart {
-    padding: 1rem;
+    top: 0;
+    width: 100%;
   }
   .aLink {
     text-decoration: none;
@@ -189,38 +153,62 @@ const NavWrapper = styled.nav`
       font-size: 0.85rem;
     }
   }
-  h1 {
-    display: inline;
-    color: #533118;
-    font-family: "EB Garamond", serif;
-    font-weight: 500;
-    margin: 0.5rem;
+  .cart {
+    padding: 1rem;
   }
+  .home {
+    left: 50%;
+    mix-blend-mode: difference;
+    position: fixed;
+    transform: translate(-50%, 0);
+    z-index: 300;
+    span {
+      color: #fff;
+    }
   }
+  .nav__link {
+    align-items: center;
+    display: flex;
+    height: 100%;
+    text-decoration: none;
+    svg {
+      fill: #fff;
+    }
+    span {
+      display: block;
+      font-family: "Cabin", sans-serif;
+      font-size: 0.5rem;
+      text-align: center;
+    }
+  }
+  @media (max-width: 800px) {
+    display: none;
+  }
+}
 `;
 
 const Products = styled.div`
-  flex: 1;
-  display: flex;
   align-items: center;
   box-sizing: border-box;
-  .expndBtn {
-    display: none;
-  }
+  display: flex;
+  flex: 1;
   ul {
-    max-width: 600px;
-    width: 100%;
-    margin: 0 auto;
     display: grid;
+    font-size: 0.85rem;
     grid-template-columns: 25% 25% 25% 25%;
     list-style-type: none;
+    margin: 0 auto;
+    max-width: 600px;
     padding: 0.5rem;
-    font-size: 0.85rem;
+    width: 100%;
   }
   li {
-    text-align: center;
     color: #333;
     font-size: 0.9rem;
+    text-align: center;
+  }
+  .expndBtn {
+    display: none;
   }
 `;
 

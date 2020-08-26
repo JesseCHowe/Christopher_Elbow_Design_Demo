@@ -32,8 +32,6 @@ const SignatureChocolateContainer = styled.div`
   @media (max-width: 950px) {
     display: block;
   }
-  .test {
-  }
 `;
 
 const Placeholder = styled.div`

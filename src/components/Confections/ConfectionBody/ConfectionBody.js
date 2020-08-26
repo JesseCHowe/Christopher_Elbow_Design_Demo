@@ -4,8 +4,8 @@ import { useSelector } from "react-redux";
 import { Route, useRouteMatch } from "react-router-dom";
 import CategoryNav from "../../CategoryNav/CategoryNav";
 import styled from "styled-components";
-import DisplayController from "./DisplayController/DisplayController";
-import Dropdown from "../../UI/Dropdown/Dropdown";
+import DisplayController from "./DisplayController";
+import Dropdown from "../../UI/Dropdown";
 import ItemCards from "./ItemsCards/ItemCards";
 
 const ConfectionBody = (props) => {
@@ -47,12 +47,12 @@ const ConfectionWrapper = styled.div`
 `;
 
 const ConfectionsContainer = styled.div`
+  box-sizing: border-box;
+  column-gap: 1rem;
   display: grid;
   grid-template-columns: 1fr 3fr;
-  column-gap: 1rem;
   margin: 0 auto;
   max-width: 1200px;
-  box-sizing: border-box;
   @media (max-width: 750px) {
     display: block;
   }

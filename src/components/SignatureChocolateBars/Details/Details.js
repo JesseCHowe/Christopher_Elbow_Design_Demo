@@ -1,14 +1,14 @@
 import React from "react";
 import styled from "styled-components";
 import { useSelector, useDispatch } from "react-redux";
-import Button from "../../UI/Button/Button";
+import Button from "../../UI/Button";
 import { addToCart } from "../../../store/actions/productSelection";
 
-const Details = props => {
+const Details = (props) => {
   const dispatch = useDispatch();
-  const products = useSelector(state => state.products);
+  const products = useSelector((state) => state.products);
   let inCart;
-  products.forEach(product => {
+  products.forEach((product) => {
     if (product.name === props.product.name) {
       inCart = true;
     }
@@ -28,9 +28,7 @@ const Details = props => {
   return (
     <DetailsStyle>
       <ProductName>{props.product.name}</ProductName>
-      <ProductPrice>
-        ${props.product.price}
-      </ProductPrice>
+      <ProductPrice>${props.product.price}</ProductPrice>
       <p>{props.product.desc}</p>
       {cartBtn}
     </DetailsStyle>
@@ -38,14 +36,14 @@ const Details = props => {
 };
 
 const DetailsStyle = styled.div`
-max-width: 400px;
-margin: 0 auto;
+  margin: 0 auto;
+  max-width: 400px;
 `;
 
 const ProductPrice = styled.p`
-color: gray;
-font-weight: bold;
-margin-top: 0;
+  color: gray;
+  font-weight: bold;
+  margin-top: 0;
 `;
 
 const ProductName = styled.p`

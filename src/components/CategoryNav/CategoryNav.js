@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import SubCategories from "./ProductList_FINAL/ProductList";
+import SubCategories from "./ProductList";
 
 const categoryNav = props => {
   return (
@@ -16,26 +16,26 @@ const categoryNav = props => {
 
 const CategoryNav = styled.div`
   background: #333;
-  color: #efefef;
-  width: 100%;
-  max-width: 400px;
+  border-right: 2px solid #efefef;
   box-sizing: border-box;
-  position: sticky;
-  top: 1rem;
-  padding: 1rem;
+  color: #efefef;
   display: block;
   height: fit-content;
-  border-right: 2px solid #efefef;
+  max-width: 400px;
+  padding: 1rem;
+  position: sticky;
+  top: 1rem;
+  width: 100%;
   h1 {
     margin: 0;
     margin-bottom: 1rem;
   }
   @media (max-width: 750px) {
-    position: relative;
-    height: auto;
-    max-width: 100%;
     border: 0;
     display: none;
+    height: auto;
+    max-width: 100%;
+    position: relative;
   }
 `;
 

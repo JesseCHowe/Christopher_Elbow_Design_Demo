@@ -36,7 +36,6 @@ const bonBons = (state = initalState, action) => {
         items: []
       };
     case actionTypes.SET_INDEX:
-      console.log("adding Current Index to reducer");
       return {
         ...state,
         currentIndex: action.currentIndex

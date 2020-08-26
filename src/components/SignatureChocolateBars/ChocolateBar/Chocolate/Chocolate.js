@@ -1,7 +1,7 @@
 import React from "react";
 import styled, { keyframes } from "styled-components";
 
-const chocolate = props => {
+const chocolate = (props) => {
   return (
     <ChocolateStyled
       chocolateType={props.chocolateType}
@@ -20,20 +20,20 @@ let slideIn = keyframes`
 `;
 
 const ChocolateStyled = styled.div`
-  box-sizing: border-box;
-  position: absolute;
-  right: 0;
-  display: block;
-  transform: translateX(-80%);
   animation: 1s ${slideIn} forwards;
-  background-image: ${props =>
+  background-image: ${(props) =>
     `url(${require(`../../../../assets/chocolates/${props.chocolateType}.png`)})`};
-  background-size: cover;
   background-position: right;
-  width: 30%;
+  background-size: cover;
+  box-sizing: border-box;
+  display: block;
   height: 98%;
   margin: 0;
+  position: absolute;
+  right: 0;
+  transform: translateX(-80%);
   top: 1%;
+  width: 30%;
   z-index: 0;
 `;
 

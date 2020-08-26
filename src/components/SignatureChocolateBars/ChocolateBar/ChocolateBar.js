@@ -3,7 +3,7 @@ import styled from "styled-components";
 import Wrapper from "./Wrapper/Wrapper";
 import Chocolate from "./Chocolate/Chocolate";
 
-const chocolateBar = props => {
+const chocolateBar = (props) => {
   return (
     <ChocolateBar>
       <Wrapper product={props.product} />
@@ -16,18 +16,17 @@ const chocolateBar = props => {
 };
 
 const ChocolateBar = styled.div`
-  position: relative;
-  display: flex;
   align-items: center;
-  margin: 0 auto;
   display: block;
   height: 550px;
-  width: 100%;
+  margin: 0 auto;
   max-width: calc(550px * 0.73);
+  position: relative;
+  width: 100%;
   @media (max-width: 450px) {
-    min-width: 0px;
     height: 410px;
     max-width: 320px;
+    min-width: 0px;
   }
 `;
 

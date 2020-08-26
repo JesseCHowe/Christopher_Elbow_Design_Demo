@@ -1,23 +1,20 @@
 import React from "react";
 import styled from "styled-components";
-import BoxSelection from "../components/BonBons/Box/BoxSelection";
-import BonBonSelection from "../components/BonBons/Box/BonBonSelection";
+import BoxSelection from "../components/BonBons/BoxSelection";
+import BonBonSelection from "../components/BonBons/BonBonSelection";
 import { useSelector, useDispatch } from "react-redux";
 import { reset, previousStep } from "../store/actions/bonBons";
 import { addToCart } from "../store/actions/productSelection";
-import Button from "../components/UI/Button/Button";
-import Box from "../components/BonBons/BoxV2";
-import Header from "../components/UI/Header/Header";
+import Button from "../components/UI/Button";
+import Box from "../components/BonBons/Box";
+import Header from "../components/UI/Header";
 
 const Bonbons = () => {
   const dispatch = useDispatch();
   const step = useSelector((state) => state.bonBons.step);
   const bonbonPurchase = useSelector((state) => state.bonBons.bonBon);
   const numItems = useSelector((state) => state.bonBons.items);
-
-  const displayBonBonSelection = useSelector(
-    (state) => state.bonBons.bonBonSelection
-  );
+  const displayBonBonSelection = useSelector((state) => state.bonBons.bonBonSelection);
 
   function handleStepOne() {
     dispatch(previousStep());
@@ -49,8 +46,8 @@ const Bonbons = () => {
         <React.Fragment>
           <Box />
           <div className="button-container">
-            <button className="proceedBtn" onClick={() => handleStepOne()}>
-              Prev Step
+            <button className="prevBtn" onClick={() => handleStepOne()}>
+              Select Box
             </button>
             <Button
               disabled={filled < size}
@@ -88,13 +85,25 @@ const Bonbons = () => {
 
 const BonBonContainer = styled.div`
   box-sizing: border-box;
-  max-width: 1200px;
   margin: 0 auto;
+  max-width: 1200px;
   .button-container {
+    align-items: center;
+    display: flex;
     margin: 1rem auto;
     width: fit-content;
-    display: flex;
-    align-items: center;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+  }
+  .prevBtn{
+    text-transform: uppercase;
+
+    background: gray;
+    font-weight: bold;
+    border: 0;
+    color: #fff;
+    padding: 0.5rem;
+    outline: none;
   }
 `;
 

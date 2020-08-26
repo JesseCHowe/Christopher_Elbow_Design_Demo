@@ -21,7 +21,7 @@ const App = () => {
         <Route path="/bonbons" component={Bonbons}></Route>
         <Route path="/product/:id" component={Product}></Route>
         <Route path="/artisan-confections" component={Confections}></Route>
-        <Route path="/" component={Home}></Route>
+        <Route exact path="/" component={Home}></Route>
         <Route component={_404}></Route>
       </Switch>
     </React.Fragment>

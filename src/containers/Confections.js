@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react";
 import axios from "../axios";
-import Spinner from "../components/UI/Spinner/Spinner";
-import Header from "../components/UI/Header/Header";
-import SortModal from "../components/Confections/SortModal";
 import ConfectionBody from "../components/Confections/ConfectionBody/ConfectionBody";
+import Header from "../components/UI/Header";
+import React, { useState, useEffect } from "react";
+import SortModal from "../components/Confections/SortModal";
+import Spinner from "../components/UI/Spinner";
 
 const Confections = () => {
   let [confectionData, setConfectionData] = useState(null);
